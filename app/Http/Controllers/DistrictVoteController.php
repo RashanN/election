@@ -56,15 +56,28 @@ class DistrictVoteController extends Controller
     }
 
     public function showResults(){
-        $results = DB::table('_district_votes')
-        ->join('parties', '_district_votes.party_id', '=', 'parties.id')
-        ->select('parties.name as party_name', DB::raw('COUNT(_district_votes.party_id) as count'))
-        ->where('priority', 1)
-        ->groupBy('parties.name')
-        ->orderBy('count', 'desc')
-        ->limit(3) // Adjust as needed
-        ->get();
+        $lastDistrictVote = DB::table('_district_votes')
+        ->orderBy('id', 'desc')  // Order by the 'id' to get the last row
+        ->first();
 
-    return view('districtresult', compact('results'));
+    if ($lastDistrictVote) {
+        $districtId = $lastDistrictVote->district_id;
+
+        
+        $results = DB::table('_district_votes')
+            ->join('parties', '_district_votes.party_id', '=', 'parties.id')
+            ->select('parties.name as party_name', DB::raw('COUNT(_district_votes.party_id) as count'))
+            ->where('_district_votes.district_id', $districtId) 
+            ->where('priority', 1)
+            ->groupBy('parties.name')
+            ->orderBy('count', 'desc')
+            ->limit(3)  
+            ->get();
+
+        return view('districtresult', compact('results'));
+    } else {
+       
+        return view('districtresult', ['results' => []]);
+    }
     }
 }
