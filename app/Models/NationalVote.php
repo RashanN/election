@@ -9,7 +9,7 @@ class NationalVote extends Model
 {
     use HasFactory;
     protected $fillable = ['priority', 'party_id', 'user_id'];
-
+    protected $table = '_national_votes';
     // Define relationships
     public function party()
     {
