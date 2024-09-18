@@ -77,7 +77,7 @@ class RegisteredUserController extends Controller
             Auth::login($user);
 
             // Redirect to the intended route
-            return redirect()->route('dashboard');
+            return redirect()->route('nationalvote.create');
 
         } catch (QueryException $e) {
             // Handle duplicate entry error

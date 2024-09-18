@@ -61,7 +61,7 @@ class NationalVoteController extends Controller
         // Combine results with party names
         $data = $results->map(function ($result) use ($parties) {
             return [
-                'party_name' => $parties[$result->party_id]->name,
+                'party_name' => $parties[$result->party_id]->candidate_name	,
                 'count' => $result->count,
             ];
         });
