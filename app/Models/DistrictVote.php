@@ -9,7 +9,7 @@ class DistrictVote extends Model
 {
     use HasFactory;
     protected $fillable = ['priority', 'party_id', 'user_id', 'district_id'];
-
+    protected $table = '_district_votes';
   
     public function party()
     {

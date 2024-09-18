@@ -51,6 +51,20 @@ class DistrictVoteController extends Controller
     ]);
 
         
-        return redirect()->route('nationalresults')->with('success', 'Predictions submitted successfully.');
+    return redirect()->route('districtresults')->with('success', 'Predictions submitted successfully.');
+
+    }
+
+    public function showResults(){
+        $results = DB::table('_district_votes')
+        ->join('parties', '_district_votes.party_id', '=', 'parties.id')
+        ->select('parties.name as party_name', DB::raw('COUNT(_district_votes.party_id) as count'))
+        ->where('priority', 1)
+        ->groupBy('parties.name')
+        ->orderBy('count', 'desc')
+        ->limit(3) // Adjust as needed
+        ->get();
+
+    return view('districtresult', compact('results'));
     }
 }
