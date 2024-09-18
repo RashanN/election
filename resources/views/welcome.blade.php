@@ -60,10 +60,14 @@
                 REGISTER
             </a>
 
-            <!-- Login as Guest Button -->
-            <a href="{{ route('guest.login') }}" class="w-full bg-black text-white font-semibold py-2 px-4 rounded hover:bg-gray-800 uppercase text-center">
-                LOGIN AS A GUEST
-            </a>
+            
+
+            <form method="POST" action="{{ route('guest.login') }}" class="w-full bg-black text-white font-semibold py-2 px-4 rounded hover:bg-gray-800 uppercase text-center">
+                            @csrf
+                    <button type="submit">
+                            LOGIN AS  GUEST
+                    </button>
+            </form>
 
         </div>
 
