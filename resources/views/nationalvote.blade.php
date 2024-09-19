@@ -72,6 +72,24 @@
             border: 1px solid #d1d5db;
             border-top: none;
             border-radius: 0 0 4px 4px;
+            max-height:200px;
+            overflow-y: auto;
+        }
+        .select-items::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .select-items::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .select-items::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .select-items::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
         .select-hide {
             display: none;
@@ -180,6 +198,10 @@
 
         const optionsDiv = document.createElement('div');
         optionsDiv.setAttribute('class', 'select-items select-hide');
+        const optionsWrapper = document.createElement('div');
+        optionsWrapper.style.maxHeight = '200px'; // Match the max-height in CSS
+        optionsWrapper.style.overflowY = 'auto';
+
 
         parties.forEach(party => {
             const option = document.createElement('div');

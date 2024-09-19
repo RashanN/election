@@ -37,7 +37,7 @@
         }
         </style>
         <style>
-        .distric-select{
+        .district-select{
             background-color: #f3f4f6;
             padding: 8px 16px;
             border: 1px solid #d1d5db;
@@ -46,6 +46,16 @@
             color: #000;
             width: 100%;
             max-width: 300px;
+        }
+        .district-selected::after {
+            content: '\25BC'!important; /* Downward arrow symbol */
+            position: absolute;
+            right: 10px; /* Distance from the right */
+            top: 50%; /* Vertically center the arrow */
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #000;
+            pointer-events: none; /* Ensure arrow doesn't affect interactions */
         }
         
         .custom-select {
@@ -84,6 +94,24 @@
             border: 1px solid #d1d5db;
             border-top: none;
             border-radius: 0 0 4px 4px;
+            max-height:200px;
+            overflow-y: auto;
+        }
+        .select-items::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .select-items::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .select-items::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .select-items::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
         .select-hide {
             display: none;
@@ -151,7 +179,7 @@
             
             <div class="mt-10 flex flex-col items-center form-group mb-6 mt-10">
                 
-                <select class="distric-select" name="district" id="district" required>
+                <select class="district-select" name="district" id="district" required>
                     <option value="">Select your district</option>
                     @foreach($districts as $district)
                         <option value="{{ $district->id }}">{{ $district->name }}</option>
@@ -161,7 +189,6 @@
             
             <!-- 1st Prediction -->
             <div class="flex flex-col items-center form-group mb-6">
-                
                 <div class="custom-select" id="first-prediction-select"></div>
                 <input type="hidden" name="first_prediction" id="first-prediction-input">
             </div>
@@ -209,6 +236,9 @@
 
         const optionsDiv = document.createElement('div');
         optionsDiv.setAttribute('class', 'select-items select-hide');
+        const optionsWrapper = document.createElement('div');
+        optionsWrapper.style.maxHeight = '200px'; // Match the max-height in CSS
+        optionsWrapper.style.overflowY = 'auto';
 
         parties.forEach(party => {
             const option = document.createElement('div');
