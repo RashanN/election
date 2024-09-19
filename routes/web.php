@@ -17,6 +17,12 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/admin/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('admin.dashboard');
+    });
+
 Route::post('/guest-login', [GuestLoginController::class, 'login'])->name('guest.login');
 
 Route::middleware('auth')->group(function () {
@@ -35,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/admin/dashboard', [DashboardController::class, 'getNationalVotes'])->name('admin.dashboard');
 });
 
 Route::post('login', [AuthenticatedSessionController::class, 'store'])

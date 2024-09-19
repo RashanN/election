@@ -109,7 +109,7 @@
             option.setAttribute('data-value', party.id);
             option.innerHTML = `
                 <img src="${party.logo}" alt="${party.name}" class="party-logo">
-                <span>${party.name}</span>
+              
             `;
             option.addEventListener('click', function(e) {
                 selected.innerHTML = this.innerHTML;

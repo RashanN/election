@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\NationalVote;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -33,5 +34,15 @@ class DashboardController extends Controller
             ];
         });
         return view('dashboard', compact('data'));
+    }
+        public function getNationalVotes()
+    {
+        
+        $votes = NationalVote::with(['user', 'party'])
+            ->select('priority', 'party_id', 'user_id')
+            ->get();
+
+       
+        return view('admin.dashboard', compact('votes'));
     }
 }
