@@ -58,4 +58,27 @@
             </x-primary-button>
         </div>
     </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginTypeSelect = document.getElementById('login_type');
+            const loginLabel = document.getElementById('login-label'); // Target the label by its id
+    
+            // Add event listener for dropdown change
+            loginTypeSelect.addEventListener('change', function() {
+                const selectedValue = loginTypeSelect.value;
+    
+                // Change label based on the selected option
+                if (selectedValue === 'email') {
+                    loginLabel.innerHTML = 'Email Address'; // Change label to "Email Address"
+                } else if (selectedValue === 'phone') {
+                    loginLabel.innerHTML = 'Phone Number'; // Change label to "Phone Number"
+                }
+    
+                console.log('Selected login type:', selectedValue); // Logging the value to check
+            });
+    
+            // Trigger change event to set initial label
+            loginTypeSelect.dispatchEvent(new Event('change'));
+        });
+    </script>
 </x-guest-layout>

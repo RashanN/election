@@ -84,7 +84,7 @@
     });
 </script>
         <div class="mt-4">
-            <a href="{{ route('districtvote.create') }}" >
+            <a href="{{ route('dashboard') }}" >
                 Next
             </a>
         </div>
