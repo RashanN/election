@@ -47,9 +47,15 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
-        // Redirect to intended page
-        return redirect()->intended('/dashboard');
-    }
+       
+        if ($user->isNVdone == 0 && $user->isDVdone == 0) {
+            return redirect()->route('nationalvote.create');
+        } elseif ($user->isNVdone == 1 && $user->isDVdone == 0) {
+            return redirect()->route('nationalresults');
+        } else {
+            return redirect()->intended('/dashboard');
+        }
+        }
     /**
      * Destroy an authenticated session.
      */
