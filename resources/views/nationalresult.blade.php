@@ -28,13 +28,35 @@
             color: rgb(255, 255, 255);
             font-size: 12px;
         }
+        .logout-button {
+                display: none; /* Initially hidden */
+            }
+
+        .logout-button.visible {
+                display: block; /* Show when visible class is added */
+        }
     </style>
 </head>
 <body class="flex items-center justify-center">
     <div class="absolute top-0 bottom-0 bg-black bg-opacity-50 text-white w-full sm:w-[24rem] md:w-[32rem] lg:w-[40rem] h-auto rounded-lg overflow-hidden shadow-lg">
         <div class="flex justify-between items-center bg-black py-4 px-6">
             <div class="text-white font-bold text-lg md:text-2xl"><img src="img/logo-2.png" alt="Logo" class="w-40 h-auto"></div>
-            <div class="text-white text-xs md:text-sm">{{ Auth::user()->name }}</div>
+            <!-- User Name and Logout -->
+            <div class="relative flex items-center">
+                <div class="text-white text-xs md:text-sm cursor-pointer mr-4" id="username">
+                    {{ Auth::user()->name }}
+                </div>
+
+                <!-- Logout Button (hidden by default) -->
+                <div id="logoutButton" class="logout-button absolute right-0 top-full mt-2 bg-black bg-opacity-75 p-2 rounded-lg shadow-lg transform scale-95 transition-transform duration-300 ease-in-out">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="text-sm text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 px-4 py-2 rounded-lg transition-all duration-300 ease-in-out">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div class="p-4 md:p-6 flex flex-col items-center">
@@ -100,6 +122,26 @@
                         }
                     });
                 </script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const usernameButton = document.getElementById('username');
+            const logoutButton = document.getElementById('logoutButton');
+
+            usernameButton.addEventListener('click', function(event) {
+                // Prevent the click event from propagating to the document
+                event.stopPropagation();
+                // Toggle visibility of the logout button
+                logoutButton.classList.toggle('visible');
+            });
+
+            document.addEventListener('click', function(event) {
+                // Hide the logout button if clicking outside of it
+                if (!logoutButton.contains(event.target) && !usernameButton.contains(event.target)) {
+                    logoutButton.classList.remove('visible');
+                }
+            });
+        });
+    </script>
 
                 <!-- Predict Button -->
                 <div class="mt-4 text-center">

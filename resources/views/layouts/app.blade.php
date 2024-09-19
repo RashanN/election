@@ -35,7 +35,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen">
-            @include('layouts.navigation1')
+            @include('layouts.navigation')
 
             
         </div>
