@@ -138,7 +138,6 @@
             const districtId = document.getElementById('district').value;
 
             if (districtId) {
-                // Redirect to the next page with the selected district as a query parameter
                 window.location.href = "{{ route('districtvote.create') }}" + "?district=" + districtId;
             } else {
                 alert('Please select a district before proceeding.');
