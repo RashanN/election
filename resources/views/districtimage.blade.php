@@ -1,52 +1,142 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-    <div class="container mx-auto px-4 py-8">
-        <h2 class="text-2xl font-bold mb-6">Make Your District Predictions</h2>
-        
-        <div class="form-group">
-            <label for="district" class="block mb-2 font-bold">Select Your District</label>
-            <select name="district" id="district" class="w-full p-2 border rounded" required>
-                <option value="">Select your district</option>
-                @foreach($districts as $district)
-                <option value="{{ $district->id }}" data-image="{{ $district->image }}">{{ $district->name }}</option>
-                @endforeach
-            </select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('img/bg.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-image: url('img/bg.jpg'); /* Replace with your mobile background image */
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            color: rgb(255, 255, 255);
+            font-size: 12px;
+        } 
+        .logout-button {
+                display: none; /* Initially hidden */
+            }
+
+        .logout-button.visible {
+                display: block; /* Show when visible class is added */
+        }
+        .district-select {
+    background-color: #f3f4f6;
+    padding: 8px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #000;
+    width: 100%;
+    max-width: 300px; /* Keeps this for desktop view */
+}
+
+@media (max-width: 768px) {
+    .district-select {
+        font-size: 14px; /* Slightly smaller text for mobile */
+        padding: 6px 12px; /* Adjust padding for mobile */
+        max-width: 100%; /* Ensure full width on mobile */
+    }
+
+    select {
+        width: 100%; /* Ensure select dropdown adjusts to full width */
+    }
+}
+
+        </style>
+
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[24rem] md:w-[32rem] lg:w-[40rem] h-auto rounded-lg overflow-hidden shadow-lg">
+        <div class="flex justify-between items-center bg-black py-4 px-6">
+            <div class="text-white font-bold text-lg md:text-2xl"><img src="img/logo-2.png" alt="Logo" class="w-40 h-auto"></div>
+            <!-- User Name and Logout -->
+            <div class="relative flex items-center">
+                <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;" class="text-white text-xs md:text-sm cursor-pointer mr-4" id="username">
+                    {{ Auth::user()->name }}
+                </div>
+
+                <!-- Logout Button (hidden by default) -->
+                <div id="logoutButton" class="logout-button absolute right-0 top-full mt-2 bg-black bg-opacity-75 p-2 rounded-lg shadow-lg transform scale-95 transition-transform duration-300 ease-in-out">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;" type="submit" class="text-sm text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 px-4 py-2 rounded-lg transition-all duration-300 ease-in-out">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="mt-6">
-            <img id="district-image" src="" alt="District Image" class="hidden max-w-full h-auto">
-        </div>
-        <div class="mt-4">
-            <a href="{{ route('districtvote.create') }}" id="next-link" class="inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                Next
-            </a>
-        </div>
+
+        <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
+
+    <div class="flex flex-col items-center justify-center container mx-auto px-4 py-8">
+       
+            <h2 class="mt-5 text-xl font-bold mb-2">Predict Your District Winner</h2>
+            
+            <div class=" flex flex-col items-center form-group mb-0 mt-1">
+                
+                <select class="district-select" name="district" id="district" required>
+                    <option value="">Select your district</option>
+                    @foreach($districts as $district)
+                    <option value="{{ $district->id }}" data-image="{{ $district->image }}">{{ $district->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mt-0">
+                <img id="district-image" src="" alt="District Image" style="display: none; max-width: 200px; height: auto;">
+
+            </div>
+
+            <div class="mt-0">
+                <a href="{{ route('districtvote.create') }}"  id="next-link">
+                    Next
+                </a>
+            </div>
+            
     </div>
-
+    </div>
+    <style>
+      
+    </style>
     <script>
-        const districtSelect = document.getElementById('district');
-        const imageElement = document.getElementById('district-image');
-        const nextLink = document.getElementById('next-link');
-
-        districtSelect.addEventListener('change', function () {
+        document.getElementById('district').addEventListener('change', function () {
             const selectedOption = this.options[this.selectedIndex];
             const imageUrl = selectedOption.getAttribute('data-image');
             console.log(imageUrl);
             
+            const imageElement = document.getElementById('district-image');
+
             if (imageUrl) {
                 imageElement.src = imageUrl;
-                imageElement.classList.remove('hidden');
+                imageElement.style.display = 'block'; // Show the image
             } else {
-                imageElement.classList.add('hidden');
+                imageElement.style.display = 'none'; // Hide the image if no image URL
             }
         });
 
-        nextLink.addEventListener('click', function (event) {
-            event.preventDefault();
-            const districtId = districtSelect.value;
+        document.getElementById('next-link').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Get the selected district value
+            const districtId = document.getElementById('district').value;
+
             if (districtId) {
                 window.location.href = "{{ route('districtvote.create') }}" + "?district=" + districtId;
             } else {
@@ -54,4 +144,31 @@
             }
         });
     </script>
-</x-app-layout>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const usernameButton = document.getElementById('username');
+            const logoutButton = document.getElementById('logoutButton');
+
+            usernameButton.addEventListener('click', function(event) {
+                // Prevent the click event from propagating to the document
+                event.stopPropagation();
+                // Toggle visibility of the logout button
+                logoutButton.classList.toggle('visible');
+            });
+
+            document.addEventListener('click', function(event) {
+                // Hide the logout button if clicking outside of it
+                if (!logoutButton.contains(event.target) && !usernameButton.contains(event.target)) {
+                    logoutButton.classList.remove('visible');
+                }
+            });
+        });
+    </script>
+
+        <!-- Footer -->
+    <div class="footer">
+        &copy; All Rights Reserved.
+    </div>
+
+</body>
+</html>
