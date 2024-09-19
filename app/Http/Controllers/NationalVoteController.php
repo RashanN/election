@@ -53,12 +53,8 @@ class NationalVoteController extends Controller
     }
     public function showResults()
     {
-        $results = DB::table('_national_votes')
-        ->select('party_id', DB::raw('COUNT(*) as count'))
-        ->where('priority', 1)
-        ->groupBy('party_id')
-        ->orderBy('count', 'desc')
-        ->limit(3) 
+        $results = DB::table('national_vote_summary')
+        ->whereIn('ranking', [1, 2, 3])
         ->get();
 
        
@@ -66,7 +62,7 @@ class NationalVoteController extends Controller
         $partyIds = $results->pluck('party_id');
         $parties = DB::table('parties')->whereIn('id', $partyIds)->get()->keyBy('id');
 
-        // Combine results with party names
+       
         $data = $results->map(function ($result) use ($parties) {
             return [
                 'party_name' => $parties[$result->party_id]->candidate_name	,

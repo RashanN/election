@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="container mx-auto px-4 py-8">
-        <form action="{{route('nationalvote.store')}}" method="POST">
+        <form action="{{route('districtvote.store')}}" method="POST">
             @csrf
             <h2 class="text-2xl font-bold mb-6">Make Your District Predictions</h2>
             
