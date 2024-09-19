@@ -8,7 +8,7 @@
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-2xl font-bold mb-4">District Voting Results</h1>
 
-        @if ($results->isEmpty())
+        @if ($data->isEmpty())
             <p>No results available yet.</p>
         @else
         <div class="mb-6">
@@ -20,8 +20,8 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     // Extracting data from the Blade variables
-    const chartLabels = @json($results->pluck('party_name'));
-    const chartData = @json($results->pluck('count'));
+    const chartLabels = @json($data->pluck('party_name'));
+    const chartData = @json($data->pluck('count'));
 
     const ctx = document.getElementById('myBarChart').getContext('2d');
     const myBarChart = new Chart(ctx, {

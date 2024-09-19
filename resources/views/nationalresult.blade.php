@@ -24,8 +24,8 @@
 
                 <script>
                     // Replace the static chartLabels and chartData with dynamic ones if needed.
-                    const chartLabels = @json($data->pluck('party_name'));  // Dynamically from Laravel data
-                    const chartData = @json($data->pluck('count'));         // Dynamically from Laravel data
+                    const chartLabels = @json($data->pluck('party_name'));
+                    const chartData = @json($data->pluck('count'));      // Dynamically from Laravel data
                 
                     const ctx = document.getElementById('myBarChart').getContext('2d');
                     const myBarChart = new Chart(ctx, {
