@@ -14,10 +14,15 @@
                 <select name="district" id="district" required>
                     <option value="">Select your district</option>
                     @foreach($districts as $district)
-                        <option value="{{ $district->id }}">{{ $district->name }}</option>
+                    <option value="{{ $district->id }}" data-image="{{ $district->image }}">{{ $district->name }}</option>
                     @endforeach
                 </select>
             </div>
+            <div class="mt-6">
+                <img id="district-image" src="" alt="District Image" style="display: none; max-width: 100%; height: auto;">
+
+            </div>
+
             <div class="mt-4">
                 <a href="{{ route('districtvote.create') }}"  id="next-link">
                     Next
@@ -30,13 +35,27 @@
       
     </style>
     <script>
+        document.getElementById('district').addEventListener('change', function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const imageUrl = selectedOption.getAttribute('data-image');
+            console.log(imageUrl);
+            
+            const imageElement = document.getElementById('district-image');
+
+            if (imageUrl) {
+                imageElement.src = imageUrl;
+                imageElement.style.display = 'block'; // Show the image
+            } else {
+                imageElement.style.display = 'none'; // Hide the image if no image URL
+            }
+        });
+
         document.getElementById('next-link').addEventListener('click', function (event) {
             event.preventDefault(); // Prevent default link behavior
 
             // Get the selected district value
             const districtId = document.getElementById('district').value;
-            console.log(districtId);
-            
+
             if (districtId) {
                 // Redirect to the next page with the selected district as a query parameter
                 window.location.href = "{{ route('districtvote.create') }}" + "?district=" + districtId;
