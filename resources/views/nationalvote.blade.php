@@ -4,19 +4,20 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
+    
     <div>
+        
         <form action="{{route('nationalvote.store')}}" method="POST">
             @csrf
             <h2>Make Your  Predictions</h2>
             
-           
+           {{-- {{dd($parties)}} --}}
 
             <!-- 1st Prediction -->
             <div class="form-group">
-                <label for="first-1prediction">1st Prediction</label>
-                <select name="first_prediction" id="1prediction" required>
-                    <option value="">Select your first prediction</option>
+                <label for="second-prediction">2nd Prediction</label>
+                <select name="second_prediction" id="2prediction" required>
+                    <option value="">Select your second prediction</option>
                     @foreach($parties as $party)
                         <option value="{{ $party->id }}">{{ $party->name }}</option>
                     @endforeach
@@ -29,7 +30,7 @@
                 <select name="second_prediction" id="2prediction" required>
                     <option value="">Select your second prediction</option>
                     @foreach($parties as $party)
-                        <option value="{{ $party->id }}">{{ $party->name }}</option>
+                        <option value="{{ $party->id }}">{{ $party->logo }}</option>
                     @endforeach
                 </select>
             </div>
@@ -40,7 +41,7 @@
                 <select name="third_prediction" id="3prediction" required>
                     <option value="">Select your third prediction</option>
                     @foreach($parties as $party)
-                        <option value="{{ $party->id }}">{{ $party->name }}</option>
+                        <option value="{{ $party->id }}"><img src="{{$party->logo}} " alt="ghbvjh" width="50" height="50"></option>
                     @endforeach
                 </select>
             </div>
@@ -79,6 +80,7 @@ dropdowns.forEach(dropdown => {
   dropdown.addEventListener('change', updateDropdowns);
 });
 updateDropdowns();
+
     </script>
     
 </x-app-layout>
