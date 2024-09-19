@@ -19,7 +19,10 @@ class NationalVoteController extends Controller
     }
     public function store(Request $request)
     {
+        $user = Auth::user();
         $user_id = Auth::id();
+        
+        
         $request->validate([
             'first_prediction' => 'required|exists:parties,id',
             'second_prediction' => 'required|exists:parties,id',
@@ -40,6 +43,11 @@ class NationalVoteController extends Controller
             'party_id' => $request->input('third_prediction'),
             'user_id' => $user_id,
         ]);
+        if ($user->email !== 'guest@example.com') {
+           
+            $user->isNVdone = true;
+            $user->save();
+        }
         return redirect()->route('nationalresults')->with('success', 'Predictions submitted successfully.');
 
     }

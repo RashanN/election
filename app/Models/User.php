@@ -24,6 +24,8 @@ class User extends Authenticatable
         'role',
         'is_guest',
         'extra_column',
+        'isNVdone',
+        'isDVdone',
     ];
 
     /**

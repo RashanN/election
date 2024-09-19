@@ -60,86 +60,90 @@
     </form>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const loginTypeSelect = document.getElementById('login_type'); // Dropdown element
-    const loginLabel = document.getElementById('login-label'); // Target the login label
+    const loginTypeSelect = document.getElementById('login_type'); 
+    const loginLabel = document.getElementById('login-label'); 
 
-    // Add event listener for the dropdown change event
     loginTypeSelect.addEventListener('change', function() {
-        const selectedValue = loginTypeSelect.value;
-
-        // Update the label text based on the selected option
-        if (selectedValue === 'email') {
-            loginLabel.innerHTML = 'Email Address'; // Update label for Email
-        } else if (selectedValue === 'phone') {
-            loginLabel.innerHTML = 'Phone Number'; // Update label for Phone
-        }
-    });
-
-    // Trigger the change event on page load to set the initial label value
-    loginTypeSelect.dispatchEvent(new Event('change'));
-});
-document.addEventListener('DOMContentLoaded', function() {
-        const loginTypeSelect = document.getElementById('login_type'); // Dropdown element
-        const loginLabel = document.getElementById('login-label'); // Login label
-        const loginInput = document.getElementById('login'); // The input field
-        const validationMessage = document.getElementById('validation-message'); // For displaying validation messages
-
-        // Function to restrict input for phone numbers
-        function restrictPhoneInput(event) {
             const selectedValue = loginTypeSelect.value;
 
-            // Only allow numbers and the "+" sign for phone input
-            if (selectedValue === 'phone') {
-                const key = event.key;
-
-                // Allow numbers, backspace, delete, arrow keys, and "+" only at the start
-                if (!/^\d$/.test(key) && key !== '+' && key !== 'Backspace' && key !== 'Delete' && key !== 'ArrowLeft' && key !== 'ArrowRight') {
-                    event.preventDefault(); // Prevent invalid key presses
-                }
-
-                // Ensure the "+" sign is only allowed as the first character
-                if (key === '+' && loginInput.value.length > 0) {
-                    event.preventDefault(); // Prevent "+" if it's not the first character
-                }
-            }
-        }
-
-        // Add event listener for the dropdown change event
-        loginTypeSelect.addEventListener('change', function() {
-            const selectedValue = loginTypeSelect.value;
-
-            // Update the label text based on the selected option
+            
             if (selectedValue === 'email') {
-                loginLabel.innerHTML = 'Email Address'; // Update label for Email
-                loginInput.setAttribute('placeholder', 'Enter your email'); // Set placeholder for email
-                loginInput.value = ''; // Reset the input value
-                loginInput.removeEventListener('keypress', restrictPhoneInput); // Remove phone input restriction
-                validationMessage.innerHTML = ''; // Clear validation message
+                loginLabel.innerHTML = 'Email Address'; 
             } else if (selectedValue === 'phone') {
-                loginLabel.innerHTML = 'Phone Number'; // Update label for Phone
-                loginInput.setAttribute('placeholder', 'Enter your phone number (+94)'); // Set placeholder for phone
-                loginInput.value = ''; // Reset the input value
-                loginInput.addEventListener('keypress', restrictPhoneInput); // Restrict input for phone
-                validationMessage.innerHTML = ''; // Clear validation message
+                loginLabel.innerHTML = 'Phone Number'; 
             }
         });
 
-        // Add input validation logic
+        
+        loginTypeSelect.dispatchEvent(new Event('change'));
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginTypeSelect = document.getElementById('login_type'); 
+        const loginLabel = document.getElementById('login-label'); 
+        const loginInput = document.getElementById('login'); 
+        const validationMessage = document.getElementById('validation-message'); 
+
+        
+        function restrictPhoneInput(event) {
+            const selectedValue = loginTypeSelect.value;
+
+        
+            if (selectedValue === 'phone') {
+                const key = event.key;
+
+                
+                if (!/^\d$/.test(key) && key !== '+' && key !== 'Backspace' && key !== 'Delete' && key !== 'ArrowLeft' && key !== 'ArrowRight') {
+                    event.preventDefault(); 
+                }
+
+             
+                if (key === '+' && loginInput.value.length > 0) {
+                    event.preventDefault(); 
+                }
+
+                // Prevent entering more than 10 characters (including "+94")
+                if (loginInput.value.length >= 12 && key !== 'Backspace' && key !== 'Delete' && key !== 'ArrowLeft' && key !== 'ArrowRight') {
+                    event.preventDefault(); 
+                }
+            }
+        }
+
+       
+        loginTypeSelect.addEventListener('change', function() {
+            const selectedValue = loginTypeSelect.value;
+
+           
+            if (selectedValue === 'email') {
+                loginLabel.innerHTML = 'Email '; 
+                loginInput.setAttribute('placeholder', 'Enter your email'); 
+                loginInput.value = ''; 
+                loginInput.removeEventListener('keypress', restrictPhoneInput); 
+                validationMessage.innerHTML = ''; 
+            } else if (selectedValue === 'phone') {
+                loginLabel.innerHTML = 'Mobile'; 
+                loginInput.setAttribute('placeholder', 'Enter your phone number '); 
+                loginInput.value = ''; 
+                loginInput.addEventListener('keypress', restrictPhoneInput); 
+                validationMessage.innerHTML = ''; 
+            }
+        });
+
+       
         loginInput.addEventListener('input', function() {
             const selectedValue = loginTypeSelect.value;
             const inputValue = loginInput.value;
 
             if (selectedValue === 'email') {
-                // Email validation using regex
+               
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailPattern.test(inputValue)) {
                     validationMessage.innerHTML = 'Please enter a valid email address.';
                 } else {
-                    validationMessage.innerHTML = ''; // Clear the message on valid input
+                    validationMessage.innerHTML = ''; 
                 }
             } else if (selectedValue === 'phone') {
                 // Phone number validation for +94 and 9 digits
-                const phonePattern = /^\+94\d{9}$/;
+                const phonePattern = /^0\d{9}$/;
                 if (!phonePattern.test(inputValue)) {
                     validationMessage.innerHTML = 'Phone number must start with +94 and contain exactly 9 digits.';
                 } else {

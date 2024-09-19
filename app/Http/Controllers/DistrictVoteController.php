@@ -19,7 +19,7 @@ class DistrictVoteController extends Controller
     }
     public function store(Request $request){
         $user_id = Auth::id();
-
+        $user = Auth::user();
     
     $request->validate([
         'district' => 'required|exists:districts,id', 
@@ -49,7 +49,11 @@ class DistrictVoteController extends Controller
         'user_id' => $user_id,
         'district_id' => $request->input('district'),
     ]);
-
+    if ($user->email !== 'guest@example.com') {
+           
+        $user->isDVdone = true;
+        $user->save();
+    }
         
     return redirect()->route('districtresults')->with('success', 'Predictions submitted successfully.');
 
