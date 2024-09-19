@@ -1,49 +1,86 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Background image */
+        body {
+            background-image: url('/img/bg.jpg'); /* Adjust path as needed */
+            background-size: cover;
+            background-position: center;
+        }
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+        /* Footer style */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            color: rgb(0, 0, 0);
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">
 
-        <div>
-            <x-input-label for="login" :value="__('Email or Phone')" />
-            <x-text-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus />
-            <x-input-error :messages="$errors->get('login')" class="mt-2" />
+    <!-- Main container -->
+    <div class="w-full sm:w-[20rem] md:w-[24rem] lg:w-[28rem] h-auto rounded-lg flex flex-col items-center justify-center p-6">
+
+        <!-- Logo section -->
+        <div class="mb-8">
+            <a href="/">
+                <img src="/img/logo.png" alt="Logo" class="w-80 h-auto">
+            </a>
         </div>
 
+        <!-- Login Form -->
+        <form method="POST" action="/login" class="w-full flex flex-col items-center">
+            <!-- CSRF Token -->
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <!-- Email or Phone -->
+            <div class="w-full mb-4">
+                <label for="login" class="block text-sm font-medium text-gray-700">Email or Phone</label>
+                <input id="login" class="w-full bg-white border border-gray-300 rounded px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-black uppercase" type="text" name="login" required autofocus>
+                <!-- Placeholder for error messages -->
+                <!-- Adjust styling as needed -->
+            </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <!-- Password -->
+            <div class="w-full mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input id="password" class="w-full bg-white border border-gray-300 rounded px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-black uppercase" type="password" name="password" required autocomplete="current-password">
+                <!-- Placeholder for error messages -->
+                <!-- Adjust styling as needed -->
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <!-- Remember Me -->
+            <div class="block mb-4">
+                <label for="remember_me" class="inline-flex items-center">
+                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
+                </label>
+            </div>
 
-        
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+            <!-- Submit Button -->
+            <div class="w-full flex items-center justify-between mt-4">
+                <a href="/password/reset" class="text-sm text-gray-600 hover:text-gray-900 underline">Forgot your password?</a>
+                <button type="submit" class="bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
+                    Log in
+                </button>
+            </div>
+        </form>
 
-        <div class="flex items-center justify-end mt-4">
-            {{-- @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif --}}
+    </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
+    <!-- Footer -->
+    <div class="footer">
+        &copy; All Rights Reserved.
+    </div>
 
-    
-</x-guest-layout>
+</body>
+</html>
