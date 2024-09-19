@@ -61,37 +61,33 @@
     
     <script>
       
-        const firstPrediction = document.getElementById('1prediction');
-        const secondPrediction = document.getElementById('2prediction');
-        const thirdPrediction = document.getElementById('3prediction');
-    
-       
-        function updateDropdowns() {
-           
-            const selectedFirst = firstPrediction.value;
-            const selectedSecond = secondPrediction.value;
-    
-          
-            filterOptions(secondPrediction, selectedFirst);
-            filterOptions(thirdPrediction, selectedFirst, selectedSecond);
-        }
-    
-        
-        function filterOptions(dropdown, ...selectedValues) {
-            const options = dropdown.querySelectorAll('option');
-    
-            options.forEach(option => {
-                if (selectedValues.includes(option.value)) {
-                    option.style.display = 'none';  
-                } else {
-                    option.style.display = 'block'; 
-                }
-            });
-        }
-    
-       
-        firstPrediction.addEventListener('change', updateDropdowns);
-        secondPrediction.addEventListener('change', updateDropdowns);
+         
+      const dropdowns = [
+  document.getElementById('1prediction'),
+  document.getElementById('2prediction'),
+  document.getElementById('3prediction')
+];
+ 
+function updateDropdowns() {
+  const selectedValues = dropdowns.map(dropdown => dropdown.value);
+ 
+  dropdowns.forEach((currentDropdown, index) => {
+    const options = currentDropdown.querySelectorAll('option');
+    
+    options.forEach(option => {
+      if (selectedValues.includes(option.value) && option.value !== currentDropdown.value) {
+        option.disabled = true;
+      } else {
+        option.disabled = false;
+      }
+    });
+  });
+}
+ 
+dropdowns.forEach(dropdown => {
+  dropdown.addEventListener('change', updateDropdowns);
+});
+updateDropdowns();
     </script>
     
 </x-app-layout>
