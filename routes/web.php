@@ -17,10 +17,18 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/admin/dashboard', function () {
+            return view('admin.dashboard');
+        })->name('admin.dashboard');
+    });
+
 Route::post('/guest-login', [GuestLoginController::class, 'login'])->name('guest.login');
 
 Route::middleware('auth')->group(function () {
     Route::get('/national-vote', [NationalVoteController::class, 'create'])->name('nationalvote.create');
+
+    
     Route::post('/nationalvote', [NationalVoteController::class, 'store'])->name('nationalvote.store');
    
     Route::get('/national-results', [NationalVoteController::class, 'showResults'])->name('nationalresults');
@@ -28,6 +36,8 @@ Route::middleware('auth')->group(function () {
     
 
     Route::get('/district-vote', [DistrictVoteController::class, 'create'])->name('districtvote.create');
+    Route::get('/district-image', [DistrictVoteController::class, 'showImage'])->name('distrctimage');
+
     Route::post('/districtvote',[DistrictVoteController::class,'store'])->name('districtvote.store');
 
     Route::get('/district-results', [DistrictVoteController::class, 'showResults'])->name('districtresults');
@@ -35,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/admin/dashboard', [DashboardController::class, 'getNationalVotes'])->name('admin.dashboard');
 });
 
 Route::post('login', [AuthenticatedSessionController::class, 'store'])

@@ -63,7 +63,7 @@
     <div class="mt-10 p-4 md:p-6 flex flex-col items-center">
         <h1 class="text-2xl font-bold mb-6 text-center">District Results</h1>
 
-        @if ($results->isEmpty())
+        @if ($data->isEmpty())
             <p>No results available yet.</p>
         @else
         <div class="mb-6 p-4 rounded-lg shadow-lg">
@@ -76,8 +76,8 @@
         
 <script>
     // Extracting data from the Blade variables
-    const chartLabels = @json($results->pluck('party_name'));
-    const chartData = @json($results->pluck('count'));
+    const chartLabels = @json($data->pluck('party_name'));
+    const chartData = @json($data->pluck('count'));
 
     const ctx = document.getElementById('myBarChart').getContext('2d');
     const myBarChart = new Chart(ctx, {

@@ -47,7 +47,10 @@ class AuthenticatedSessionController extends Controller
             ]);
         }
 
-       
+        if ($user->role == 'admin') {
+            return redirect()->route('admin.dashboard');
+        }
+        
         if ($user->isNVdone == 0 && $user->isDVdone == 0) {
             return redirect()->route('nationalvote.create');
         } elseif ($user->isNVdone == 1 && $user->isDVdone == 0) {
