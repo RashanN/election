@@ -27,51 +27,7 @@
     </div>
 
     <style>
-        .custom-select {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-        }
-        .select-selected {
-            background-color: #f3f4f6;
-            padding: 8px 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .select-items {
-            position: absolute;
-            background-color: #f9fafb;
-            top: 100%;
-            left: 0;
-            right: 0;
-            z-index: 99;
-            border: 1px solid #d1d5db;
-            border-top: none;
-            border-radius: 0 0 4px 4px;
-        }
-        .select-hide {
-            display: none;
-        }
-        .select-items div {
-            padding: 8px 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-        .select-items div:hover {
-            background-color: #e5e7eb;
-        }
-        .party-logo {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            object-fit: contain;
-        }
-        .disabled-option {
-            opacity: 0.5;
-            pointer-events: none;
-        }
+      
     </style>
     <script>
         document.getElementById('next-link').addEventListener('click', function (event) {
