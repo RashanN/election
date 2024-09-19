@@ -17,6 +17,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                luckiest: ['"Luckiest Guy"', 'cursive'],
             },
         },
     },
