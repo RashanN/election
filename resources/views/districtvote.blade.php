@@ -11,13 +11,7 @@
             <h2 class="text-2xl font-bold mb-6">Make Your District Predictions</h2>
             
             <div class="form-group">
-                <label for="district">Select Your District</label>
-                <select name="district" id="district" required>
-                    <option value="">Select your district</option>
-                    @foreach($districts as $district)
-                        <option value="{{ $district->id }}">{{ $district->name }}</option>
-                    @endforeach
-                </select>
+                <input type="hidden" name="district" value="{{ $districtId }}">
             </div>
             
             <!-- 1st Prediction -->

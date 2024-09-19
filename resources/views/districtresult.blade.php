@@ -13,6 +13,7 @@
         @else
         <div class="mb-6">
             <h3 class="text-center text-md md:text-lg font-semibold mb-2">Predictions Bar Chart</h3>
+            <h3 class="text-center text-md md:text-lg font-semibold mb-2"></h3>
             <canvas id="myBarChart"></canvas>
         </div>
         @endif

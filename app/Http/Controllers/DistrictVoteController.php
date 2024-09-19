@@ -12,11 +12,16 @@ use Illuminate\Support\Facades\Auth;
 class DistrictVoteController extends Controller
 {
     //
-    public function create(){
+    public function create(Request $request){
+      
+        $districtId = $request->query('district');
+
         $parties = Party::all();
         $districts = District::all();
-        return view('districtvote', compact('parties','districts'));
+        return view('districtvote', compact('parties','districts','districtId'));
     }
+
+
     public function store(Request $request){
         $user_id = Auth::id();
         $user = Auth::user();
@@ -83,5 +88,9 @@ class DistrictVoteController extends Controller
        
         return view('districtresult', ['results' => []]);
     }
+    }
+    public function showImage(){
+        $districts = District::all();
+        return view('districtimage', compact('districts'));
     }
 }

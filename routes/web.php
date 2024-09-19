@@ -27,6 +27,8 @@ Route::post('/guest-login', [GuestLoginController::class, 'login'])->name('guest
 
 Route::middleware('auth')->group(function () {
     Route::get('/national-vote', [NationalVoteController::class, 'create'])->name('nationalvote.create');
+
+    
     Route::post('/nationalvote', [NationalVoteController::class, 'store'])->name('nationalvote.store');
    
     Route::get('/national-results', [NationalVoteController::class, 'showResults'])->name('nationalresults');
@@ -34,6 +36,8 @@ Route::middleware('auth')->group(function () {
     
 
     Route::get('/district-vote', [DistrictVoteController::class, 'create'])->name('districtvote.create');
+    Route::get('/district-image', [DistrictVoteController::class, 'showImage'])->name('distrctimage');
+
     Route::post('/districtvote',[DistrictVoteController::class,'store'])->name('districtvote.store');
 
     Route::get('/district-results', [DistrictVoteController::class, 'showResults'])->name('districtresults');
