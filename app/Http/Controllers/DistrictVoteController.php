@@ -93,13 +93,13 @@ class DistrictVoteController extends Controller
              $count = 0;
              switch ($result->ranking) {
                  case 1:
-                     $count = $result->priority_1_count;
+                     $count = $result->priority_1_percentage;
                          break;
                  case 2:
-                      $count = $result->priority_2_count;
+                      $count = $result->priority_2_percentage;
                          break;
                  case 3:
-                      $count = $result->priority_3_count;
+                      $count = $result->priority_3_percentage;
                           break;
               }
                          

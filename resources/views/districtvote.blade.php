@@ -194,14 +194,17 @@
     <div class="flex flex-col items-center justify-center container mx-auto px-4 py-8">
         <form action="{{route('districtvote.store')}}" method="POST">
             @csrf
-            <h2 class="mt-10 text-xl font-bold mb-6 flex justify-center ">District Level Predictions</h2>
-            <div class="mt-10 flex flex-col items-center form-group mb-6 mt-10">
-                
+
+            <div class="mt-10 flex flex-col items-center form-group mb-3"> 
                 <div class="form-group">
                     <input type="hidden" name="district" value="{{ $districtId }}">
-                    <h2 class="display-4 font-weight-bold text-primary">{{ $district->name }}</h2>
+                    <h2 class="display-4 text-2xl font-weight-bold text-primary">{{ $district->name }}</h2>
                 </div>
             </div>
+            <div class="mb-6 text-center">
+                <img src="img/title/1.png" alt="National Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-64 xl:w-64 h-auto" />
+            </div>
+            
             
             <!-- 1st Prediction -->
             <div class="flex flex-col items-center form-group mb-6">
@@ -239,7 +242,7 @@
     const parties = @json($parties);
     const selectElements = ['first-prediction-select', 'second-prediction-select', 'third-prediction-select'];
     const inputElements = ['first-prediction-input', 'second-prediction-input', 'third-prediction-input'];
-    const defaultLabels = ['1<sup>st</sup> Predicted Winner', '2<sup>nd</sup> Predicted Winner', '3<sup>rd</sup> Predicted Winner'];
+    const defaultLabels = ['Prediction for 1<sup>st</sup>', 'Prediction for 2<sup>nd</sup>', 'Prediction for 3<sup>rd</sup>'];
 
     function createCustomSelect(elementId, inputId, defaultLabel) {
         const selectContainer = document.getElementById(elementId);
