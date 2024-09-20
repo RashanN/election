@@ -19,16 +19,6 @@
                 background-image: url('img/bg.jpg'); /* Replace with your mobile background image */
             }
         }
-
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            color: rgb(255, 255, 255);
-            font-size: 12px;
-        }
         .logout-button {
                 display: none; /* Initially hidden */
             }
@@ -216,10 +206,6 @@ const myDistrictBarChart = new Chart(districtCtx, {
                 </div>
 
 
-    <!-- Footer -->
-    <div class="footer">
-        &copy; All Rights Reserved.
-    </div>
 
 </body>
 </html>
