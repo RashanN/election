@@ -96,7 +96,7 @@
 
             </div>
 
-            <div class="mt-1 flex justify-center w-[100px] bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">
+            <div class="mt-1 flex justify-center w-[100px] bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded" id="next-button" style="display: none;">
                 <a  href="{{ route('districtvote.create') }}"  id="next-link">
                     Next
                 </a>
@@ -156,6 +156,32 @@
             });
         });
     </script>
+    <script>
+        document.getElementById('district').addEventListener('change', function () {
+    const selectedOption = this.options[this.selectedIndex];
+    const imageUrl = selectedOption.getAttribute('data-image');
+    const districtId = this.value;
+    
+    const imageElement = document.getElementById('district-image');
+    const nextButton = document.getElementById('next-button');
+
+    // Show or hide the district image
+    if (imageUrl) {
+        imageElement.src = imageUrl;
+        imageElement.style.display = 'block'; // Show the image
+    } else {
+        imageElement.style.display = 'none'; // Hide the image if no image URL
+    }
+
+    // Show the "Next" button only if a valid district is selected
+    if (districtId) {
+        nextButton.style.display = 'flex'; // Show the button
+    } else {
+        nextButton.style.display = 'none'; // Hide the button if no selection
+    }
+});
+
+        </script>
 
 
 </body>
