@@ -156,18 +156,13 @@
                                         }
                                     },
                                     tooltip: {
-                                         callbacks: {
-                                             label: function(context) {
-                                                 let label = context.dataset.label || '';
-                                                if (label) {
-                                                     label += ': '; 
-                                                    } 
-                                                if (context.parsed.x !== null) {
-                                                     label += context.parsed.x.toFixed(2) + '%'; 
-                                                    } 
-                                                    return label; 
-                                                        } 
-                                                    }
+                                        callbacks: {
+                                            label: function(tooltipItem) {
+                                                const value = tooltipItem.raw; // Get the percentage value
+                                                return value + '%'; // Append percentage mark
+                                            }
+                                        }
+                                    }
                                 },
                                 responsive: true, // Ensures the chart is responsive
                                 maintainAspectRatio: false // Allows chart resizing

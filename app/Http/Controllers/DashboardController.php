@@ -77,7 +77,7 @@ class DashboardController extends Controller
     }
    
       
-    return view('dashboard', compact( 'district') + ['data' => collect($data), 'data1' => collect($data1)]);
+    return view('dashboard', compact( 'district') + ['data' => collect($data), 'data1' => collect($data1),'district_name' => $result->district_name]);
     }
     public function getNationalVotes(Request $request)
     {

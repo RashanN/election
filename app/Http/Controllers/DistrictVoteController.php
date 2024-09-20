@@ -70,7 +70,8 @@ class DistrictVoteController extends Controller
     }
    
         
-    return redirect()->route('districtresults')->with('success', 'Predictions submitted successfully.');
+     return redirect()->route('districtresults')->with('success', 'Predictions submitted successfully.');
+    
 
     }
 
@@ -110,10 +111,10 @@ class DistrictVoteController extends Controller
          }
 
         
-        return view('districtresult', ['data' => collect($data)]);
+        return view('districtresult', ['data' => collect($data),'district_name' => $result->district_name ]);
     } else {
        
-        return view('districtresult', ['data' => []]);
+        return view('districtresult', ['data' => [],'district_name' => '']);
     }
     }
     public function showImage(){

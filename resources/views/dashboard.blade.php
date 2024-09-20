@@ -77,8 +77,17 @@
             </div>
         </div>
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
-        <div class="mt-8 p-4 md:p-6 flex flex-col items-center">
-            <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">NATIONAL Results</h2>
+        <div class="mt-2 p-1 md:p-1 flex flex-col items-center">
+            
+
+        <div class="mt-0 flex flex-col items-center form-group mb-3"> 
+                <div class="form-group">
+                    <h2 class="display-4 text-3xl font-weight-bold text-primary">National</h2>
+                </div>
+        </div>
+        <div class="mb-6 text-center">
+                <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
+        </div>
 
             @if ($data->isEmpty())
                 <p class="text-white text-center">No results available yet.</p>
@@ -88,8 +97,15 @@
                     <canvas id="myBarChart" style="width: 100%; height: 150px;"></canvas>
                 </div>
     </div>
-    <div class="mt-5 p-1 md:p-1 flex flex-col items-center">
-        <h1 class="text-2xl font-bold mb-0 text-center">District Results</h1>
+    <div class="mt-0 p-1 md:p-1 flex flex-col items-center">
+        <div class="mt-0 flex flex-col items-center form-group mb-3"> 
+                <div class="form-group">
+                    <h2 class="display-4 text-3xl font-weight-bold text-primary">{{ $district_name }}</h2>
+                </div>
+        </div>
+        <div class="mb-1 text-center">
+                <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
+        </div>
 
         @if ($data->isEmpty())
             <p>No results available yet.</p>
@@ -144,6 +160,14 @@ const myBarChart = new Chart(nationalCtx, {
             legend: {
                 labels: {
                     color: '#FFFFFF',
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        const value = tooltipItem.raw; // Get the percentage value
+                        return value + '%'; // Append percentage mark
+                    }
                 }
             }
         },
@@ -216,6 +240,14 @@ const myDistrictBarChart = new Chart(districtCtx, {
             legend: {
                 labels: {
                     color: '#FFFFFF',
+                }
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        const value = tooltipItem.raw; // Get the percentage value
+                        return value + '%'; // Append percentage mark
+                    }
                 }
             }
         },

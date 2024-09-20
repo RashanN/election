@@ -155,7 +155,17 @@
 
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
     <div class="mt-8 p-4 md:p-6 flex flex-col items-center">
-        <h1 class="text-xl md:text-2xl font-bold mb-4 text-center">District Results</h1>
+        
+        <div class="mt-10 flex flex-col items-center form-group mb-3"> 
+                <div class="form-group">
+                    <h2 class="display-4 text-3xl font-weight-bold text-primary">{{ $district_name }}</h2>
+                </div>
+        </div>
+        <div class="mb-6 text-center">
+                <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
+        </div>
+
+
 
         @if ($data->isEmpty())
             <p class="text-white text-center">No results available yet.</p>
@@ -265,6 +275,14 @@ const myBarChart = new Chart(ctx, {
 
                 }
 
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        const value = tooltipItem.raw; // Get the percentage value
+                        return value + '%'; // Append percentage mark
+                    }
+                }
             }
 
         },
