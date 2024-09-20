@@ -104,7 +104,7 @@
 
             <div class="text-white font-bold text-lg md:text-2xl">
 
-                <img src="img/logo-2.png" alt="Logo" class="w-32 md:w-40 h-auto">
+                <img src="img/logo w.gif" alt="Logo" class="w-32 md:w-40 h-auto">
 
             </div>
 
