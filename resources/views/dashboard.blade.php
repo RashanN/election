@@ -43,7 +43,7 @@
 
         @media (max-width: 768px) {
             body {
-                background-image: url('img/bg.jpg'); /* Replace with your mobile background image */
+                background-image: url('img/bg2.jpg'); /* Replace with your mobile background image */
             }
         }
         .logout-button {

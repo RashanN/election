@@ -43,15 +43,12 @@
             background-size: cover;
             background-position: center;
         }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            color: rgb(0, 0, 0);
-            font-size: 12px;
+        @media (max-width: 768px) {
+            body {
+                background-image: url('img/bg2.jpg'); /* Replace with your mobile background image */
+            }
         }
+        
     </style>
 </head>
 <body class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">

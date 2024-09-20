@@ -35,29 +35,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-image: url('img/bg.jpg'); /* Replace with your background image */
-            background-size: cover;
-            background-position: center;
-        }<!DOCTYPE html>
 
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Prediction Page</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-
-    <style>
 
         body {
 
@@ -75,7 +53,7 @@
 
             body {
 
-                background-image: url('img/bg.jpg'); /* Use the same image for mobile, or adjust as needed */
+                background-image: url('img/bg2.jpg'); /* Use the same image for mobile, or adjust as needed */
 
             }
 
