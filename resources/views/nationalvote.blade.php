@@ -44,7 +44,7 @@
 
         @media (max-width: 768px) {
             body {
-                background-image: url('img/bg2.jpg'); /* Replace with your mobile background image */
+                background-image: url('img/bg.jpg'); /* Replace with your mobile background image */
             }
         }
 
@@ -166,7 +166,10 @@
     <div class="mt-10 flex flex-col items-center justify-center container mx-auto px-4 py-8">
             <form action="{{route('nationalvote.store')}}" method="POST">
                 @csrf
-                <h2 class="text-2xl font-bold mb-6 text-center">National Level Predictions</h2>
+                <div class="mb-6 text-center">
+                    <img src="img/title/3.png" alt="National Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto" />
+                </div>
+
 
                 <!-- 1st Prediction -->
                 <div class="mt-10 flex flex-col items-center form-group mb-6">
