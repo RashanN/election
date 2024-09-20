@@ -60,13 +60,13 @@
             </div>
         </div>
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
-        <div class="mt-5 p-1 md:p-1 flex flex-col items-center">
-            <h2 class="text-2xl font-bold mb-0 text-center">NATIONAL Results</h2>
+        <div class="mt-8 p-4 md:p-6 flex flex-col items-center">
+            <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">NATIONAL Results</h2>
 
             @if ($data->isEmpty())
                 <p class="text-white text-center">No results available yet.</p>
             @else
-                <div class="mb-0 p-4 rounded-lg shadow-lg">
+                <div class="w-full md:w-[90%] mb-4 p-2 rounded-lg shadow-lg bg-black bg-opacity-25">
                     
                     <canvas id="myBarChart" style="width: 100%; height: 150px;"></canvas>
                 </div>
@@ -77,7 +77,7 @@
         @if ($data->isEmpty())
             <p>No results available yet.</p>
         @else
-        <div class="mb-0 p-4 rounded-lg shadow-lg">
+        <div class="w-full md:w-[90%] mb-4 p-2 rounded-lg shadow-lg bg-black bg-opacity-25">
             
         <canvas id="myDistrictBarChart" style="width: 100%; height: 150px;"></canvas>
         </div>
