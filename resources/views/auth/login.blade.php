@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <style>
         /* Background image */
         body {
@@ -13,20 +14,12 @@
             background-position: center;
         }
 
-        /* Footer style */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            color: rgb(0, 0, 0);
-            font-size: 12px;
-        }
+        
     </style>
 </head>
-<body class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">
 
+<body  class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">
+<div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
     <!-- Main container -->
     <div class="w-full sm:w-[20rem] md:w-[24rem] lg:w-[28rem] h-auto rounded-lg flex flex-col items-center justify-center p-6">
 
@@ -67,20 +60,17 @@
             </div>
 
             <!-- Submit Button -->
-            <div class="w-full flex items-center justify-between mt-4">
+            <!-- <div class="w-full flex items-center justify-between mt-4">
                 <a href="/password/reset" class="text-sm text-gray-600 hover:text-gray-900 underline">Forgot your password?</a>
                 <button type="submit" class="bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
                     Log in
                 </button>
-            </div>
+            </div> -->
         </form>
 
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        &copy; All Rights Reserved.
-    </div>
-
+    
+<div>
 </body>
 </html>

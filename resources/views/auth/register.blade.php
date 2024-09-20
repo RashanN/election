@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <style>
         body {
             background-image: url('/img/bg.jpg');
@@ -23,6 +24,7 @@
     </style>
 </head>
 <body class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">
+<div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
     <div class="w-full sm:w-[20rem] md:w-[24rem] lg:w-[28rem] h-auto rounded-lg flex flex-col items-center justify-center p-6">
         <div class="mb-8">
             <a href="/">
@@ -83,9 +85,7 @@
         </form>
     </div>
 
-    <div class="footer">
-        &copy; All Rights Reserved.
-    </div>
+  
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -142,6 +142,7 @@
             loginTypeSelect.dispatchEvent(new Event('change'));
         });
     </script>
+</div>
 </body>
 </html>
 

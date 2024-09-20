@@ -7,6 +7,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -38,7 +39,7 @@
     </style>
 </head>
 <body class="min-h-screen flex items-center justify-center font-sans antialiased dark:bg-black dark:text-white/50">
-
+<div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
     <!-- Main container -->
     <div class="w-full sm:w-[20rem] md:w-[24rem] lg:w-[28rem] h-auto rounded-lg flex flex-col items-center justify-center p-6">
 
@@ -73,10 +74,7 @@
 
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        &copy; All Rights Reserved.
-    </div>
 
+    </div>
 </body>
 </html>
