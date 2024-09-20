@@ -21,6 +21,8 @@ return new class extends Migration
              $table->string('role')->default('user');
             $table->boolean('is_guest')->default(false);
              $table->string('extra_column')->nullable();
+             $table->boolean('isDVdone')->default(false);
+             $table->boolean('isNVdone')->default(false); 
              $table->rememberToken();
               $table->timestamps();
         });

@@ -12,14 +12,23 @@ use Illuminate\Support\Facades\Auth;
 class DistrictVoteController extends Controller
 {
     //
-    public function create(){
+    public function create(Request $request){
+      
+        $districtId = $request->query('district');
+
         $parties = Party::all();
         $districts = District::all();
-        return view('districtvote', compact('parties','districts'));
+
+        $district = District::find($districtId);
+
+       
+        return view('districtvote', compact('parties','districts','districtId','district'));
     }
+
+
     public function store(Request $request){
         $user_id = Auth::id();
-
+        $user = Auth::user();
     
     $request->validate([
         'district' => 'required|exists:districts,id', 
@@ -49,22 +58,66 @@ class DistrictVoteController extends Controller
         'user_id' => $user_id,
         'district_id' => $request->input('district'),
     ]);
-
+    if ($user->email == 'guest@example.com'){
+        $user->extra_column = $request->input('district');
+        $user->save();
+    }
+    if ($user->email !== 'guest@example.com') {
+           
+        $user->isDVdone = true;
+        $user->extra_column = $request->input('district');
+        $user->save();
+    }
+   
         
     return redirect()->route('districtresults')->with('success', 'Predictions submitted successfully.');
 
     }
 
     public function showResults(){
-        $results = DB::table('_district_votes')
-        ->join('parties', '_district_votes.party_id', '=', 'parties.id')
-        ->select('parties.name as party_name', DB::raw('COUNT(_district_votes.party_id) as count'))
-        ->where('priority', 1)
-        ->groupBy('parties.name')
-        ->orderBy('count', 'desc')
-        ->limit(3) // Adjust as needed
-        ->get();
+        
+       
+       
+        $district_id = Auth::user()->extra_column;
+      
+    if ($district_id) {
+     
+        $results = DB::table('district_vote_summary')
+         ->where('district_id',$district_id)
+         ->whereIn('ranking', [1, 2, 3])
+         ->get();
 
-    return view('districtresult', compact('results'));
+        
+         $data = [];
+         foreach($results as $result ){
+             $count = 0;
+             switch ($result->ranking) {
+                 case 1:
+                     $count = $result->priority_1_count;
+                         break;
+                 case 2:
+                      $count = $result->priority_2_count;
+                         break;
+                 case 3:
+                      $count = $result->priority_3_count;
+                          break;
+              }
+                         
+                      $data[] = [
+                         "party_name" => $result->candidate_name,
+                         "count" => $count
+                          ];
+         }
+
+        
+        return view('districtresult', ['data' => collect($data)]);
+    } else {
+       
+        return view('districtresult', ['data' => []]);
+    }
+    }
+    public function showImage(){
+        $districts = District::all();
+        return view('districtimage', compact('districts'));
     }
 }
