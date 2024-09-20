@@ -172,13 +172,13 @@
                 @endif
 
                 <!-- Predict Button -->
-                <div class="mt-6 text-center w-[400px]">
+                <div class="mt-6 text-center w-[300px]">
                     <a href="{{ route('distrctimage') }}" class=" md:w-auto bg-pink-500 text-white py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300 block text-center">
                         Predict your district winner
                     </a>
                 </div>
-                <div class="mt-6 text-center w-[400px]">
-                    <a href="" class=" md:w-auto bg-pink-500 text-white py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300 block text-center">
+                <div class="mt-6 text-center w-[300px]">
+                    <a href="{{ route('dashboard') }}" class=" md:w-auto bg-pink-500 text-white py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300 block text-center">
                         Finish
                     </a>
                 </div>
