@@ -2,10 +2,41 @@
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M91HG5WFTT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M91HG5WFTT');
+        </script>
+
+        <!-- Meta Pixel Code -->
+        <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1506896873263778');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1506896873263778&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Meta Pixel Code -->
+         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
     <style>
         body {
             background-image: url('/img/bg.jpg');
@@ -24,14 +55,15 @@
     </style>
 </head>
 <body class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">
+<div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
     <div class="w-full sm:w-[20rem] md:w-[24rem] lg:w-[28rem] h-auto rounded-lg flex flex-col items-center justify-center p-6">
         <div class="mb-8">
             <a href="/">
-                <img src="/img/logo.png" alt="Logo" class="w-80 h-auto">
+                <img src="/img/logo b.gif" alt="Logo" class="w-80 h-auto">
             </a>
         </div>
    
-        <form method="POST" action="{{ route('register') }}" class="w-full flex flex-col items-center">
+        <form method="POST" action="{{ route('register') }}" class="w-full flex flex-col items-center" id="contactUSForm" >
             @csrf
             
             <div class="w-full mb-4">
@@ -75,6 +107,8 @@
                 @enderror
             </div>
 
+             
+
             <div class="w-full flex items-center justify-between mt-4">
                 <a href="{{ route('login') }}" class="text-sm text-gray-600 hover:text-gray-900 underline">Already registered?</a>
                 <button type="submit" class="bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
@@ -87,6 +121,19 @@
     <div class="footer">
         &copy; All Rights Reserved.
     </div>
+      
+    <script type="text/javascript">
+        $('#contactUSForm').submit(function(event) {
+            event.preventDefault();
+        
+            grecaptcha.ready(function() {
+                grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", {action: 'register'}).then(function(token) {
+                    $('#contactUSForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+                    $('#contactUSForm').unbind('submit').submit();
+                });;
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -143,6 +190,7 @@
             loginTypeSelect.dispatchEvent(new Event('change'));
         });
     </script>
+</div>
 </body>
 </html>
 

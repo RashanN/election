@@ -1,10 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M91HG5WFTT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M91HG5WFTT');
+        </script>
+
+        <!-- Meta Pixel Code -->
+        <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1506896873263778');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1506896873263778&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Meta Pixel Code -->
+         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <style>
         /* Background image */
         body {
@@ -13,27 +42,19 @@
             background-position: center;
         }
 
-        /* Footer style */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            color: rgb(0, 0, 0);
-            font-size: 12px;
-        }
+        
     </style>
 </head>
-<body class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">
 
+<body  class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">
+<div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
     <!-- Main container -->
     <div class="w-full sm:w-[20rem] md:w-[24rem] lg:w-[28rem] h-auto rounded-lg flex flex-col items-center justify-center p-6">
 
         <!-- Logo section -->
         <div class="mb-8">
             <a href="/">
-                <img src="/img/logo.png" alt="Logo" class="w-80 h-auto">
+                <img src="/img/logo b.gif" alt="Logo" class="w-80 h-auto">
             </a>
         </div>
 
@@ -67,9 +88,9 @@
             </div>
 
             <!-- Submit Button -->
-            <div class="w-full flex items-center justify-between mt-4">
-                <a href="/password/reset" class="text-sm text-gray-600 hover:text-gray-900 underline">Forgot your password?</a>
-                <button type="submit" class="bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
+            <div class="w-full flex justify-center mt-4">
+                <!-- <a href="/password/reset" class="text-sm text-gray-600 hover:text-gray-900 underline">Forgot your password?</a> -->
+                <button type="submit" class="w-[200px] bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
                     Log in
                 </button>
             </div>
@@ -77,10 +98,7 @@
 
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        &copy; All Rights Reserved.
-    </div>
-
+    
+<div>
 </body>
 </html>
