@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
     <style>
         body {
             background-image: url('/img/bg.jpg');
@@ -30,7 +33,7 @@
             </a>
         </div>
    
-        <form method="POST" action="{{ route('register') }}" class="w-full flex flex-col items-center">
+        <form method="POST" action="{{ route('register') }}" class="w-full flex flex-col items-center" id="contactUSForm" >
             @csrf
             
             <div class="w-full mb-4">
@@ -74,6 +77,8 @@
                 @enderror
             </div>
 
+             
+
             <div class="w-full flex items-center justify-between mt-4">
                 <a href="{{ route('login') }}" class="text-sm text-gray-600 hover:text-gray-900 underline">Already registered?</a>
                 <button type="submit" class="bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
@@ -86,6 +91,19 @@
     <div class="footer">
         &copy; All Rights Reserved.
     </div>
+      
+<script type="text/javascript">
+    $('#contactUSForm').submit(function(event) {
+        event.preventDefault();
+    
+        grecaptcha.ready(function() {
+            grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", {action: 'register'}).then(function(token) {
+                $('#contactUSForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+                $('#contactUSForm').unbind('submit').submit();
+            });;
+        });
+    });
+</script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
