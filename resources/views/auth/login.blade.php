@@ -26,7 +26,7 @@
         <!-- Logo section -->
         <div class="mb-8">
             <a href="/">
-                <img src="/img/logo.png" alt="Logo" class="w-80 h-auto">
+                <img src="/img/logo b.gif" alt="Logo" class="w-80 h-auto">
             </a>
         </div>
 
@@ -60,12 +60,12 @@
             </div>
 
             <!-- Submit Button -->
-            <!-- <div class="w-full flex items-center justify-between mt-4">
-                <a href="/password/reset" class="text-sm text-gray-600 hover:text-gray-900 underline">Forgot your password?</a>
-                <button type="submit" class="bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
+            <div class="w-full flex justify-center mt-4">
+                <!-- <a href="/password/reset" class="text-sm text-gray-600 hover:text-gray-900 underline">Forgot your password?</a> -->
+                <button type="submit" class="w-[200px] bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
                     Log in
                 </button>
-            </div> -->
+            </div>
         </form>
 
     </div>

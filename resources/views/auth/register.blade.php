@@ -28,7 +28,7 @@
     <div class="w-full sm:w-[20rem] md:w-[24rem] lg:w-[28rem] h-auto rounded-lg flex flex-col items-center justify-center p-6">
         <div class="mb-8">
             <a href="/">
-                <img src="/img/logo.png" alt="Logo" class="w-80 h-auto">
+                <img src="/img/logo b.gif" alt="Logo" class="w-80 h-auto">
             </a>
         </div>
    

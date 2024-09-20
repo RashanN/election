@@ -45,7 +45,7 @@
 
         <!-- Logo section -->
         <div class="mb-8 flex justify-center">
-            <img src="/img/logo.png" alt="Logo" class="w-100 h-auto">
+            <img src="/img/logo b.gif" alt="Logo" class="w-100 h-auto">
         </div>
 
         <!-- Button container -->
