@@ -65,6 +65,7 @@ class DistrictVoteController extends Controller
     if ($user->email !== 'guest@example.com') {
            
         $user->isDVdone = true;
+        $user->extra_column = $request->input('district');
         $user->save();
     }
    
@@ -78,7 +79,7 @@ class DistrictVoteController extends Controller
        
        
         $district_id = Auth::user()->extra_column;
-        
+      
     if ($district_id) {
      
         $results = DB::table('district_vote_summary')

@@ -43,7 +43,8 @@ class DashboardController extends Controller
             
        
         $district_id = Auth::user()->extra_column;
-        
+        $district = District::find($district_id);
+
     if ($district_id) {
      
         $results = DB::table('district_vote_summary')
@@ -76,7 +77,7 @@ class DashboardController extends Controller
     }
    
       
-        return view('dashboard', ['data' => collect($data),'data1' => collect($data1)]);
+    return view('dashboard', compact( 'district') + ['data' => collect($data), 'data1' => collect($data1)]);
     }
     public function getNationalVotes(Request $request)
     {
