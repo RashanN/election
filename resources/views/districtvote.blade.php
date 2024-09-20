@@ -173,18 +173,15 @@
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
 
     <div class="flex flex-col items-center justify-center container mx-auto px-4 py-8">
-        <form action="{{route('nationalvote.store')}}" method="POST">
+        <form action="{{route('districtvote.store')}}" method="POST">
             @csrf
             <h2 class="mt-10 text-2xl font-bold mb-6">District Level Predictions</h2>
-            
             <div class="mt-10 flex flex-col items-center form-group mb-6 mt-10">
                 
-                <select class="district-select" name="district" id="district" required>
-                    <option value="">Select your district</option>
-                    @foreach($districts as $district)
-                        <option value="{{ $district->id }}">{{ $district->name }}</option>
-                    @endforeach
-                </select>
+                <div class="form-group">
+                    <input type="hidden" name="district" value="{{ $districtId }}">
+                    <h2 class="display-4 font-weight-bold text-primary">{{ $district->name }}</h2>
+                </div>
             </div>
             
             <!-- 1st Prediction -->

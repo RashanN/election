@@ -70,6 +70,11 @@
             
             <canvas id="myBarChart" style="width: 100%; height: 300px;"></canvas>
         </div>
+        <div class="mt-4 text-center">
+            <a href="{{ route('dashboard') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
+               Next
+            </a>
+        </div>
         @endif
 
     </div>

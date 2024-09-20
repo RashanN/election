@@ -39,39 +39,45 @@ class DashboardController extends Controller
                         "count" => $count
                          ];
         }
+      
+            
+       
         $district_id = Auth::user()->extra_column;
         
-        if ($district_id) {
-         
-            $results = DB::table('district_vote_summary')
-             ->where('district_id',$district_id)
-             ->whereIn('ranking', [1, 2, 3])
-             ->get();
-    
-             $data1 = [];
-             foreach($results as $result ){
-                 $count = 0;
-                 switch ($result->ranking) {
-                     case 1:
-                         $count = $result->priority_1_count;
-                             break;
-                     case 2:
-                          $count = $result->priority_2_count;
-                             break;
-                     case 3:
-                          $count = $result->priority_3_count;
-                              break;
-                  }
-                             
-                          $data[] = [
-                             "party_name" => $result->candidate_name,
-                             "count" => $count
-                              ];
-             }
-            }
+    if ($district_id) {
+     
+        $results = DB::table('district_vote_summary')
+         ->where('district_id',$district_id)
+         ->whereIn('ranking', [1, 2, 3])
+         ->get();
+
         
-        return view('dashboard', compact('data','data1'));
-     }
+         $data1 = [];
+         foreach($results as $result ){
+             $count = 0;
+             switch ($result->ranking) {
+                 case 1:
+                     $count = $result->priority_1_count;
+                         break;
+                 case 2:
+                      $count = $result->priority_2_count;
+                         break;
+                 case 3:
+                      $count = $result->priority_3_count;
+                          break;
+              }
+                         
+                      $data1[] = [
+                         "party_name" => $result->candidate_name,
+                         "count" => $count
+                          ];
+         }
+
+    }
+   
+      
+        return view('dashboard', ['data' => collect($data),'data1' => collect($data1)]);
+    }
     public function getNationalVotes(Request $request)
     {
         $user = Auth::user();

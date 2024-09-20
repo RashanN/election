@@ -18,7 +18,11 @@ class DistrictVoteController extends Controller
 
         $parties = Party::all();
         $districts = District::all();
-        return view('districtvote', compact('parties','districts','districtId'));
+
+        $district = District::find($districtId);
+
+       
+        return view('districtvote', compact('parties','districts','districtId','district'));
     }
 
 
@@ -54,19 +58,25 @@ class DistrictVoteController extends Controller
         'user_id' => $user_id,
         'district_id' => $request->input('district'),
     ]);
-    if ($user->email !== 'guest@example.com') {
-           
-        $user->isDVdone = true;
+    if ($user->email == 'guest@example.com'){
         $user->extra_column = $request->input('district');
         $user->save();
     }
+    if ($user->email !== 'guest@example.com') {
+           
+        $user->isDVdone = true;
+        $user->save();
+    }
+   
         
     return redirect()->route('districtresults')->with('success', 'Predictions submitted successfully.');
 
     }
 
     public function showResults(){
-      
+        
+       
+       
         $district_id = Auth::user()->extra_column;
         
     if ($district_id) {
@@ -76,6 +86,7 @@ class DistrictVoteController extends Controller
          ->whereIn('ranking', [1, 2, 3])
          ->get();
 
+        
          $data = [];
          foreach($results as $result ){
              $count = 0;

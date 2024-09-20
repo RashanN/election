@@ -19,6 +19,7 @@ class GuestLoginController extends Controller
     $guestUser = User::firstOrCreate(
         ['email' => 'guest@example.com'],
         ['name' => 'Guest User', 'password' => bcrypt('guestpassword')]
+       
     );
 
     Auth::login($guestUser);
