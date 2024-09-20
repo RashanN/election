@@ -3,6 +3,7 @@
 <head>
     <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-M91HG5WFTT"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -91,7 +92,7 @@
 
             
 
-            <form method="POST" action="{{ route('guest.login') }}" class="w-full bg-black text-white font-semibold py-2 px-4 rounded hover:bg-gray-800 uppercase text-center">
+            <form method="POST" action="{{ route('guest.login') }}" class="w-full bg-black text-white font-semibold py-2 px-4 rounded hover:bg-gray-800 uppercase text-center" id="contactUSForm">
                             @csrf
                     <button type="submit">
                             LOGIN AS  GUEST
@@ -104,5 +105,17 @@
 
 
     </div>
+    <script type="text/javascript">
+        $('#contactUSForm').submit(function(event) {
+            event.preventDefault();
+        
+            grecaptcha.ready(function() {
+                grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", {action: 'guest.login'}).then(function(token) {
+                    $('#contactUSForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+                    $('#contactUSForm').unbind('submit').submit();
+                });;
+            });
+        });
+    </script>
 </body>
 </html>
