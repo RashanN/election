@@ -28,7 +28,7 @@
         src="https://www.facebook.com/tr?id=1506896873263778&ev=PageView&noscript=1"
         /></noscript>
         <!-- End Meta Pixel Code -->
-         
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
@@ -40,6 +40,11 @@
             background-image: url('/img/bg.jpg'); /* Adjust path as needed */
             background-size: cover;
             background-position: center;
+        }
+        @media (max-width: 768px) {
+            body {
+                background-image: url('img/bg2.jpg'); /* Replace with your mobile background image */
+            }
         }
 
         

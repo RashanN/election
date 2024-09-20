@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Rules\ReCaptcha;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
@@ -30,7 +31,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-       
+     
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'login_type' => ['required', 'string', 'in:email,phone'],
@@ -56,7 +57,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role' => 'user', // Default role
             'is_guest' => false, // Default guest value
+            'g-recaptcha-response' => ['required', new ReCaptcha]
         ];
+       
 
         if ($request->login_type === 'email') {
             $userData['email'] = $request->login;

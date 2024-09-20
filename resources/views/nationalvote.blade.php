@@ -138,7 +138,7 @@
 </head>
 
 <body class="flex items-center justify-center min-h-screen">
-    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[24rem] md:w-[32rem] lg:w-[40rem] h-auto rounded-lg overflow-hidden shadow-lg">
+    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[24rem] md:w-[32rem] lg:w-[40rem] h-[700px] rounded-lg overflow-hidden shadow-lg">
         <div class="flex justify-between items-center bg-black py-4 px-6">
             <div class="text-white font-bold text-lg md:text-2xl"><img src="img/logo w.gif" alt="Logo" class="w-40 h-auto"></div>
             <!-- User Name and Logout -->
@@ -163,10 +163,19 @@
     
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
     
-    <div class="mt-10 flex flex-col items-center justify-center container mx-auto px-4 py-8">
+    <div class="mt-5 flex flex-col items-center justify-center container mx-auto px-4 py-8">
             <form action="{{route('nationalvote.store')}}" method="POST">
                 @csrf
-                <h2 class="text-2xl font-bold mb-6 text-center">National Level Predictions</h2>
+                <div class="mt-1 flex flex-col items-center form-group mb-3"> 
+                <div class="form-group">
+                    
+                    <h2 class="display-4 text-3xl font-weight-bold text-primary">National</h2>
+                </div>
+                </div>
+                <div class="mb-6 text-center">
+                <img src="img/title/2.png" alt="National Level Predictions" class="mx-auto w-48 sm:w-48 md:w-48 lg:w-48 xl:w-48 h-auto" />
+                </div>
+
 
                 <!-- 1st Prediction -->
                 <div class="mt-10 flex flex-col items-center form-group mb-6">
@@ -189,7 +198,7 @@
                     <input type="hidden" name="third_prediction" id="third-prediction-input">
                 </div>
 
-                <div class="mt-20 w-full flex justify-center">
+                <div class="mt-10 w-full flex justify-center">
                     <button type="submit" class="w-[300px] bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">
                         Submit
                     </button>
@@ -206,7 +215,7 @@
     const parties = @json($parties);
     const selectElements = ['first-prediction-select', 'second-prediction-select', 'third-prediction-select'];
     const inputElements = ['first-prediction-input', 'second-prediction-input', 'third-prediction-input'];
-    const defaultLabels = ['1<sup>st</sup> Predicted Winner', '2<sup>nd</sup> Predicted Winner', '3<sup>rd</sup> Predicted Winner'];
+    const defaultLabels = ['Prediction for 1<sup>st</sup>', 'Prediction for 2<sup>nd</sup>', 'Prediction for 3<sup>rd</sup>'];
 
     function createCustomSelect(elementId, inputId, defaultLabel) {
         const selectContainer = document.getElementById(elementId);

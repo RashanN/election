@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M91HG5WFTT"></script>
         <script>
@@ -33,22 +34,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
     <style>
         body {
             background-image: url('/img/bg.jpg');
             background-size: cover;
             background-position: center;
         }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            color: rgb(0, 0, 0);
-            font-size: 12px;
+        @media (max-width: 768px) {
+            body {
+                background-image: url('img/bg2.jpg'); /* Replace with your mobile background image */
+            }
         }
+        
     </style>
 </head>
 <body class="font-sans text-gray-900 antialiased min-h-screen flex items-center justify-center">
@@ -60,7 +60,7 @@
             </a>
         </div>
    
-        <form method="POST" action="{{ route('register') }}" class="w-full flex flex-col items-center">
+        <form method="POST" action="{{ route('register') }}" class="w-full flex flex-col items-center" id="contactUSForm" >
             @csrf
             
             <div class="w-full mb-4">
@@ -104,6 +104,8 @@
                 @enderror
             </div>
 
+             
+
             <div class="w-full flex items-center justify-between mt-4">
                 <a href="{{ route('login') }}" class="text-sm text-gray-600 hover:text-gray-900 underline">Already registered?</a>
                 <button type="submit" class="bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase">
@@ -113,7 +115,22 @@
         </form>
     </div>
 
-  
+    {{-- <div class="footer">
+        &copy; All Rights Reserved.
+    </div>
+       --}}
+    <script type="text/javascript">
+        $('#contactUSForm').submit(function(event) {
+            event.preventDefault();
+        
+            grecaptcha.ready(function() {
+                grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", {action: 'register'}).then(function(token) {
+                    $('#contactUSForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+                    $('#contactUSForm').unbind('submit').submit();
+                });;
+            });
+        });
+    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

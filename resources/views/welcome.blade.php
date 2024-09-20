@@ -3,6 +3,7 @@
 <head>
     <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-M91HG5WFTT"></script>
+        <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -50,7 +51,7 @@
 
         @media (max-width: 768px) {
             body {
-                background-image: url('/img/bg.jpg'); /* Adjust path as needed */
+                background-image: url('/img/bg2.jpg'); /* Adjust path as needed */
             }
         }
 
@@ -79,30 +80,42 @@
         <!-- Button container -->
         <div class="w-full flex flex-col items-center space-y-4">
 
-            <!-- Login Button -->
-            <a href="{{ route('login') }}" class="w-full bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase text-center">
-                LOGIN
-            </a>
+    <!-- Login Button -->
+    <a href="{{ route('login') }}" class="w-full bg-red-600 text-white font-semibold py-2 px-4 rounded hover:bg-red-700 uppercase text-center">
+        LOGIN
+    </a>
 
-            <!-- Register Button -->
-            <a href="{{ route('register') }}" class="w-full bg-white text-black font-semibold py-2 px-4 rounded hover:bg-gray-100 uppercase text-center">
-                REGISTER
-            </a>
+    <!-- Register Button -->
+    <a href="{{ route('register') }}" class="w-full bg-white text-black font-semibold py-2 px-4 rounded hover:bg-gray-100 uppercase text-center">
+        REGISTER
+    </a>
 
-            
-
-            <form method="POST" action="{{ route('guest.login') }}" class="w-full bg-black text-white font-semibold py-2 px-4 rounded hover:bg-gray-800 uppercase text-center">
-                            @csrf
-                    <button type="submit">
-                            LOGIN AS  GUEST
-                    </button>
-            </form>
-
-        </div>
+    <!-- Guest Login Button -->
+    <form method="POST" action="{{ route('guest.login') }}" class="w-full">
+        @csrf
+        <button type="submit" class="w-full bg-black text-white font-semibold py-2 px-4 rounded hover:bg-gray-800 uppercase text-center">
+            LOGIN AS GUEST
+        </button>
+    </form>
 
     </div>
 
 
     </div>
+
+
+    </div>
+    <script type="text/javascript">
+        $('#contactUSForm').submit(function(event) {
+            event.preventDefault();
+        
+            grecaptcha.ready(function() {
+                grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", {action: 'guest.login'}).then(function(token) {
+                    $('#contactUSForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+                    $('#contactUSForm').unbind('submit').submit();
+                });;
+            });
+        });
+    </script>
 </body>
 </html>

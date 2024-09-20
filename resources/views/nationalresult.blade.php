@@ -45,7 +45,7 @@
 
         @media (max-width: 768px) {
             body {
-                background-image: url('img/bg.jpg'); /* Use the same image for mobile, or adjust as needed */
+                background-image: url('img/bg2.jpg'); /* Use the same image for mobile, or adjust as needed */
             }
         }
 
@@ -70,7 +70,7 @@
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen">
-    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[20rem] md:w-[28rem] lg:w-[36rem] h-auto rounded-lg overflow-hidden shadow-lg">
+    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[20rem] md:w-[28rem] lg:w-[36rem] h-[750px] rounded-lg overflow-hidden shadow-lg">
         <div class="flex justify-between items-center bg-black py-4 px-6">
             <div class="text-white font-bold text-lg md:text-2xl">
                 <img src="img/logo w.gif" alt="Logo" class="w-32 md:w-40 h-auto">
@@ -97,7 +97,9 @@
         <!-- Main Content -->
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
             <div class="mt-8 p-4 md:p-6 flex flex-col items-center">
-                <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">NATIONAL LEVEL PREDICTIONS</h2>
+            <div class="mb-6 text-center">
+                <img src="img/title/4.png" alt="National Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto" />
+            </div>
 
                 @if ($data->isEmpty())
                     <p class="text-white text-center">No results available yet.</p>
@@ -152,6 +154,14 @@
                                         labels: {
                                             color: '#FFFFFF', // Legend text color
                                         }
+                                    },
+                                    tooltip: {
+                                        callbacks: {
+                                            label: function(tooltipItem) {
+                                                const value = tooltipItem.raw; // Get the percentage value
+                                                return value + '%'; // Append percentage mark
+                                            }
+                                        }
                                     }
                                 },
                                 responsive: true, // Ensures the chart is responsive
@@ -165,6 +175,11 @@
                 <div class="mt-6 text-center w-[400px]">
                     <a href="{{ route('distrctimage') }}" class=" md:w-auto bg-pink-500 text-white py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300 block text-center">
                         Predict your district winner
+                    </a>
+                </div>
+                <div class="mt-6 text-center w-[400px]">
+                    <a href="" class=" md:w-auto bg-pink-500 text-white py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300 block text-center">
+                        Finish
                     </a>
                 </div>
             </div>
