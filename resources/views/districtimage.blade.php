@@ -63,20 +63,39 @@
     color: #000;
     width: 100%;
     max-width: 300px; /* Keeps this for desktop view */
-}
+        }
 
-@media (max-width: 768px) {
-    .district-select {
-        font-size: 14px; /* Slightly smaller text for mobile */
-        padding: 6px 12px; /* Adjust padding for mobile */
-        max-width: 100%; /* Ensure full width on mobile */
-    }
+        @media (max-width: 768px) {
+            .district-select {
+                font-size: 14px; /* Slightly smaller text for mobile */
+                padding: 6px 12px; /* Adjust padding for mobile */
+                max-width: 100%; /* Ensure full width on mobile */
+            }
 
-    select {
-        width: 100%; /* Ensure select dropdown adjusts to full width */
-    }
-}
+            select {
+                width: 100%; /* Ensure select dropdown adjusts to full width */
+            }
+        }
 
+                /* Fade-in animation */
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+
+            /* Apply fade-in animation to the next-link */
+            
+
+            /* Additional style to control visibility */
+            #next-button {
+                display: none; /* Hide initially */
+                opacity: 0;
+                animation: fadeIn 2s ease-in-out forwards; /* 1s duration, forwards to keep the final state */
+            }
         </style>
 
 </head>
@@ -108,7 +127,7 @@
     <div class="flex flex-col items-center justify-center container mx-auto px-4 py-8">
        
             <div class="mb-6 text-center">
-                <img src="img/title/5.png" alt="National Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto" />
+                <img src="img/title/5.png" alt="National Level Predictions" class="mx-auto w-96  h-auto" />
             </div>
             
             <div class=" flex flex-col items-center form-group mb-0 mt-1">
@@ -137,36 +156,34 @@
       
     </style>
     <script>
-    document.getElementById('district').addEventListener('change', function () {
-        const selectedOption = this.options[this.selectedIndex];
-        const imageUrl = selectedOption.getAttribute('data-image');
-        const districtId = this.value;
+        document.getElementById('district').addEventListener('change', function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const imageUrl = selectedOption.getAttribute('data-image');
+            console.log(imageUrl);
+            
+            const imageElement = document.getElementById('district-image');
 
-        const imageElement = document.getElementById('district-image');
-        const nextButton = document.getElementById('next-button');
-
-        // Reset image and button visibility initially
-        imageElement.style.display = 'none';
-        nextButton.style.display = 'none';
-
-        // Show or hide the district image based on the selected option
-        if (imageUrl) {
-            imageElement.src = imageUrl;
-
-            // Wait for the image to fully load before showing the "Next" button
-            imageElement.onload = function() {
+            if (imageUrl) {
+                imageElement.src = imageUrl;
                 imageElement.style.display = 'block'; // Show the image
+            } else {
+                imageElement.style.display = 'none'; // Hide the image if no image URL
+            }
+        });
 
-                // Show the "Next" button only if a valid district is selected
-                if (districtId) {
-                    nextButton.style.display = 'flex'; // Show the button
-                }
-            };
-        } else {
-            imageElement.style.display = 'none'; // Hide the image if no image URL
-        }
-    });
-</script>
+        document.getElementById('next-link').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            // Get the selected district value
+            const districtId = document.getElementById('district').value;
+
+            if (districtId) {
+                window.location.href = "{{ route('districtvote.create') }}" + "?district=" + districtId;
+            } else {
+                alert('Please select a district before proceeding.');
+            }
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const usernameButton = document.getElementById('username');
