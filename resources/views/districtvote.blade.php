@@ -194,7 +194,7 @@
     <div class="flex flex-col items-center justify-center container mx-auto px-4 py-8">
         <form action="{{route('districtvote.store')}}" method="POST">
             @csrf
-            <h2 class="mt-10 text-2xl font-bold mb-6">District Level Predictions</h2>
+            <h2 class="mt-10 text-xl font-bold mb-6 flex justify-center ">District Level Predictions</h2>
             <div class="mt-10 flex flex-col items-center form-group mb-6 mt-10">
                 
                 <div class="form-group">
