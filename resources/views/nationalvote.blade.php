@@ -209,7 +209,7 @@
     const parties = @json($parties);
     const selectElements = ['first-prediction-select', 'second-prediction-select', 'third-prediction-select'];
     const inputElements = ['first-prediction-input', 'second-prediction-input', 'third-prediction-input'];
-    const defaultLabels = ['1<sup>st</sup> Predicted Winner', '2<sup>nd</sup> Predicted Winner', '3<sup>rd</sup> Predicted Winner'];
+    const defaultLabels = ['Prediction for 1<sup>st</sup>', 'Prediction for 2<sup>nd</sup>', 'Prediction for 3<sup>rd</sup>'];
 
     function createCustomSelect(elementId, inputId, defaultLabel) {
         const selectContainer = document.getElementById(elementId);
