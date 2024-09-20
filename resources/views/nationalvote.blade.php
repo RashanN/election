@@ -163,11 +163,17 @@
     
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
     
-    <div class="mt-10 flex flex-col items-center justify-center container mx-auto px-4 py-8">
+    <div class="mt-5 flex flex-col items-center justify-center container mx-auto px-4 py-8">
             <form action="{{route('nationalvote.store')}}" method="POST">
                 @csrf
+                <div class="mt-1 flex flex-col items-center form-group mb-3"> 
+                <div class="form-group">
+                    
+                    <h2 class="display-4 text-3xl font-weight-bold text-primary">National</h2>
+                </div>
+                </div>
                 <div class="mb-6 text-center">
-                    <img src="img/title/3.png" alt="National Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto" />
+                <img src="img/title/2.png" alt="National Level Predictions" class="mx-auto w-48 sm:w-48 md:w-48 lg:w-48 xl:w-48 h-auto" />
                 </div>
 
 

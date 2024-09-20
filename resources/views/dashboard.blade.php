@@ -85,7 +85,7 @@
                     <h2 class="display-4 text-3xl font-weight-bold text-primary">National</h2>
                 </div>
         </div>
-        <div class="mb-6 text-center">
+        <div class="mb-3 text-center">
                 <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
         </div>
 
@@ -103,7 +103,7 @@
                     <h2 class="display-4 text-3xl font-weight-bold text-primary">{{ $district_name }}</h2>
                 </div>
         </div>
-        <div class="mb-1 text-center">
+        <div class="mb-3 text-center">
                 <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
         </div>
 
