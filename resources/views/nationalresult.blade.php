@@ -16,32 +16,37 @@
 
         @media (max-width: 768px) {
             body {
-                background-image: url('img/bg.jpg'); /* Replace with your mobile background image */
+                background-image: url('img/bg.jpg'); /* Use the same image for mobile, or adjust as needed */
             }
         }
 
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            color: rgb(255, 255, 255);
-            font-size: 12px;
-        }
+       
+
         .logout-button {
-                display: none; /* Initially hidden */
-            }
+            display: none; /* Initially hidden */
+        }
 
         .logout-button.visible {
-                display: block; /* Show when visible class is added */
+            display: block; /* Show when visible class is added */
         }
+
+        @media (max-width: 768px) {
+            .chart-label {
+                font-size: 10px; /* Reduce font size on mobile */
+                white-space: normal; /* Allow wrapping */
+                word-wrap: break-word; /* Break long words */
+            }
+        }
+
     </style>
 </head>
 <body class="flex items-center justify-center">
-    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[24rem] md:w-[32rem] lg:w-[40rem] h-auto rounded-lg overflow-hidden shadow-lg">
+    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[20rem] md:w-[28rem] lg:w-[36rem] h-auto rounded-lg overflow-hidden shadow-lg">
         <div class="flex justify-between items-center bg-black py-4 px-6">
-            <div class="text-white font-bold text-lg md:text-2xl"><img src="img/logo-2.png" alt="Logo" class="w-40 h-auto"></div>
+            <div class="text-white font-bold text-lg md:text-2xl">
+                <img src="img/logo-2.png" alt="Logo" class="w-32 md:w-40 h-auto">
+            </div>
+
             <!-- User Name and Logout -->
             <div class="relative flex items-center">
                 <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;" class="text-white text-xs md:text-sm cursor-pointer mr-4" id="username">
@@ -59,71 +64,85 @@
                 </div>
             </div>
         </div>
+
+        <!-- Main Content -->
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
-        <div class="mt-10 p-4 md:p-6 flex flex-col items-center">
-            <h2 class="text-2xl font-bold mb-6 text-center">NATIONAL LEVEL PREDICTIONS</h2>
+            <div class="mt-8 p-4 md:p-6 flex flex-col items-center">
+                <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">NATIONAL LEVEL PREDICTIONS</h2>
 
-            @if ($data->isEmpty())
-                <p class="text-white text-center">No results available yet.</p>
-            @else
-                <div class="mb-6 p-4 rounded-lg shadow-lg">
-                    
-                    <canvas id="myBarChart" style="width: 100%; height: 300px;"></canvas>
-                </div>
-    </div>
-                <!-- Bar Chart Script -->
-                <script>
-                    const chartLabels = @json($data->pluck('party_name'));
-                    const chartData = @json($data->pluck('count'));
+                @if ($data->isEmpty())
+                    <p class="text-white text-center">No results available yet.</p>
+                @else
+                    <div class="w-full md:w-[90%] mb-4 p-2 rounded-lg shadow-lg bg-black bg-opacity-25">
+                        <canvas id="myBarChart" class="w-full" style="height: 250px;"></canvas>
+                    </div>
 
-                    const ctx = document.getElementById('myBarChart').getContext('2d');
-                    const myBarChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: chartLabels,
-                            datasets: [{
-                                label: 'Votes/Predictions',
-                                data: chartData,
-                                backgroundColor: [
-                                    '#b51d94',
-                                    '#f2d729',
-                                    '#FFB500',
-                                    '#850713',
-                                    '#209915'
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            indexAxis: 'y',
-                            scales: {
-                                x: {
-                                    beginAtZero: true,
-                                    ticks: {
-                                        color: '#FFFFFF',
+                    <!-- Bar Chart Script -->
+                    <script>
+                        const chartLabels = @json($data->pluck('party_name'));
+                        const chartData = @json($data->pluck('count'));
+
+                        const ctx = document.getElementById('myBarChart').getContext('2d');
+                        const myBarChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: chartLabels,
+                                datasets: [{
+                                    label: 'Votes/Predictions',
+                                    data: chartData,
+                                    backgroundColor: [
+                                        '#b51d94',
+                                        '#f2d729',
+                                        '#FFB500',
+                                        '#850713',
+                                        '#209915'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                indexAxis: 'y', // This makes the bars horizontal
+                                scales: {
+                                    x: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            color: '#FFFFFF', // Change the color of x-axis labels (numbers)
+                                        }
+                                    },
+                                    y: {
+                                        ticks: {
+                                            color: '#FFFFFF', // Change the color of y-axis labels (party names)
+                                            font: {
+                                                size: window.innerWidth < 768 ? 10 : 14 // Adjust font size for mobile
+                                            }
+                                        }
                                     }
                                 },
-                                y: {
-                                    ticks: {
-                                        color: '#FFFFFF',
+                                plugins: {
+                                    legend: {
+                                        labels: {
+                                            color: '#FFFFFF', // Legend text color
+                                        }
                                     }
-                                }
-                            },
-                            plugins: {
-                                legend: {
-                                    labels: {
-                                        color: '#FFFFFF',
-                                    }
-                                }
-                            },
-                            animation: {
-                                duration: 1500,
-                                easing: 'easeOutBounce'
+                                },
+                                responsive: true, // Ensures the chart is responsive
+                                maintainAspectRatio: false // Allows chart resizing
                             }
-                        }
-                    });
-                </script>
-        <script>
+                        });
+                    </script>
+                @endif
+
+                <!-- Predict Button -->
+                <div class="mt-6 text-center w-[400px]">
+                    <a href="{{ route('distrctimage') }}" class=" md:w-auto bg-pink-500 text-white py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300 block text-center">
+                        Predict your district winner
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    <!-- Logout Script -->
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const usernameButton = document.getElementById('username');
             const logoutButton = document.getElementById('logoutButton');
@@ -143,21 +162,6 @@
             });
         });
     </script>
-
-                <!-- Predict Button -->
-                <div class="mt-4 text-center">
-                    <a href="{{ route('distrctimage') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
-                        Predict your district winner
-                    </a>
-                </div>
-                     @endif
-                </div>
-
-
-    <!-- Footer -->
-    <div class="footer">
-        &copy; All Rights Reserved.
-    </div>
 
 </body>
 </html>
