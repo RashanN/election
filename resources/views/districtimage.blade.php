@@ -107,12 +107,14 @@
 
     <div class="flex flex-col items-center justify-center container mx-auto px-4 py-8">
        
-            <h2 class="mt-5 text-xl font-bold mb-2">Predict Your District Winner</h2>
+            <div class="mb-6 text-center">
+                <img src="img/title/5.png" alt="National Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto" />
+            </div>
             
             <div class=" flex flex-col items-center form-group mb-0 mt-1">
                 
                 <select class="district-select" name="district" id="district" required>
-                    <option value="">Select your district</option>
+                    <option value="">Predict your district</option>
                     @foreach($districts as $district)
                     <option value="{{ $district->id }}" data-image="{{ $district->image }}">{{ $district->name }}</option>
                     @endforeach
@@ -135,34 +137,36 @@
       
     </style>
     <script>
-        document.getElementById('district').addEventListener('change', function () {
-            const selectedOption = this.options[this.selectedIndex];
-            const imageUrl = selectedOption.getAttribute('data-image');
-            console.log(imageUrl);
-            
-            const imageElement = document.getElementById('district-image');
+    document.getElementById('district').addEventListener('change', function () {
+        const selectedOption = this.options[this.selectedIndex];
+        const imageUrl = selectedOption.getAttribute('data-image');
+        const districtId = this.value;
 
-            if (imageUrl) {
-                imageElement.src = imageUrl;
+        const imageElement = document.getElementById('district-image');
+        const nextButton = document.getElementById('next-button');
+
+        // Reset image and button visibility initially
+        imageElement.style.display = 'none';
+        nextButton.style.display = 'none';
+
+        // Show or hide the district image based on the selected option
+        if (imageUrl) {
+            imageElement.src = imageUrl;
+
+            // Wait for the image to fully load before showing the "Next" button
+            imageElement.onload = function() {
                 imageElement.style.display = 'block'; // Show the image
-            } else {
-                imageElement.style.display = 'none'; // Hide the image if no image URL
-            }
-        });
 
-        document.getElementById('next-link').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default link behavior
-
-            // Get the selected district value
-            const districtId = document.getElementById('district').value;
-
-            if (districtId) {
-                window.location.href = "{{ route('districtvote.create') }}" + "?district=" + districtId;
-            } else {
-                alert('Please select a district before proceeding.');
-            }
-        });
-    </script>
+                // Show the "Next" button only if a valid district is selected
+                if (districtId) {
+                    nextButton.style.display = 'flex'; // Show the button
+                }
+            };
+        } else {
+            imageElement.style.display = 'none'; // Hide the image if no image URL
+        }
+    });
+</script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const usernameButton = document.getElementById('username');

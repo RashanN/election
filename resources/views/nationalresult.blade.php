@@ -97,7 +97,9 @@
         <!-- Main Content -->
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
             <div class="mt-8 p-4 md:p-6 flex flex-col items-center">
-                <h2 class="text-xl md:text-2xl font-bold mb-4 text-center">NATIONAL LEVEL PREDICTIONS</h2>
+            <div class="mb-6 text-center">
+                <img src="img/title/4.png" alt="National Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto" />
+            </div>
 
                 @if ($data->isEmpty())
                     <p class="text-white text-center">No results available yet.</p>
@@ -165,6 +167,11 @@
                 <div class="mt-6 text-center w-[400px]">
                     <a href="{{ route('distrctimage') }}" class=" md:w-auto bg-pink-500 text-white py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300 block text-center">
                         Predict your district winner
+                    </a>
+                </div>
+                <div class="mt-6 text-center w-[400px]">
+                    <a href="" class=" md:w-auto bg-pink-500 text-white py-2 px-4 md:px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300 block text-center">
+                        Finish
                     </a>
                 </div>
             </div>
