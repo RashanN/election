@@ -40,7 +40,7 @@
 
     </style>
 </head>
-<body class="flex items-center justify-center">
+<body class="flex items-center justify-center min-h-screen">
     <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[20rem] md:w-[28rem] lg:w-[36rem] h-auto rounded-lg overflow-hidden shadow-lg">
         <div class="flex justify-between items-center bg-black py-4 px-6">
             <div class="text-white font-bold text-lg md:text-2xl">
