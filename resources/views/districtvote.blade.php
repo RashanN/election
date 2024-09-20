@@ -30,7 +30,7 @@
         </style>
         <style>
         .district-select{
-            background-color: #f3f4f6;
+            background-color: #FFFFFF;
             padding: 8px 16px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
@@ -57,7 +57,7 @@
             color:#000;
         }
         .select-selected {
-            background-color: #f3f4f6;
+            background-color: #FFFFFF;
             padding: 8px 16px;
             border: 1px solid #d1d5db;
             border-radius: 4px;
