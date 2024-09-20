@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M91HG5WFTT"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-M91HG5WFTT');
+        </script>
+
+        <!-- Meta Pixel Code -->
+        <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1506896873263778');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1506896873263778&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Meta Pixel Code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Page</title>
@@ -19,15 +46,7 @@
             }
         }
 
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            color: rgb(255, 255, 255);
-            font-size: 12px;
-        } 
+         
         .logout-button {
                 display: none; /* Initially hidden */
             }
@@ -65,7 +84,7 @@
 <body class="flex items-center justify-center min-h-screen">
     <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[24rem] md:w-[32rem] lg:w-[40rem] h-auto rounded-lg overflow-hidden shadow-lg">
         <div class="flex justify-between items-center bg-black py-4 px-6">
-            <div class="text-white font-bold text-lg md:text-2xl"><img src="img/logo-2.png" alt="Logo" class="w-40 h-auto"></div>
+            <div class="text-white font-bold text-lg md:text-2xl"><img src="img/logo w.gif" alt="Logo" class="w-40 h-auto"></div>
             <!-- User Name and Logout -->
             <div class="relative flex items-center">
                 <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;" class="text-white text-xs md:text-sm cursor-pointer mr-4" id="username">
@@ -104,8 +123,8 @@
 
             </div>
 
-            <div class="mt-0">
-                <a href="{{ route('districtvote.create') }}"  id="next-link">
+            <div class="mt-1 flex justify-center w-[100px] bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded" id="next-button" style="display: none;">
+                <a  href="{{ route('districtvote.create') }}"  id="next-link">
                     Next
                 </a>
             </div>
@@ -164,11 +183,33 @@
             });
         });
     </script>
+    <script>
+        document.getElementById('district').addEventListener('change', function () {
+    const selectedOption = this.options[this.selectedIndex];
+    const imageUrl = selectedOption.getAttribute('data-image');
+    const districtId = this.value;
+    
+    const imageElement = document.getElementById('district-image');
+    const nextButton = document.getElementById('next-button');
 
-        <!-- Footer -->
-    <div class="footer">
-        &copy; All Rights Reserved.
-    </div>
+    // Show or hide the district image
+    if (imageUrl) {
+        imageElement.src = imageUrl;
+        imageElement.style.display = 'block'; // Show the image
+    } else {
+        imageElement.style.display = 'none'; // Hide the image if no image URL
+    }
+
+    // Show the "Next" button only if a valid district is selected
+    if (districtId) {
+        nextButton.style.display = 'flex'; // Show the button
+    } else {
+        nextButton.style.display = 'none'; // Hide the button if no selection
+    }
+});
+
+        </script>
+
 
 </body>
 </html>
