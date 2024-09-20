@@ -134,11 +134,20 @@
     </style>
 </head>
 <body>
+    <div style="display: flex; flex-direction: row-reverse;" id="logoutButton" class="logout-button absolute right-0 top-full mt-2 bg-black bg-opacity-75 p-2 rounded-lg transform scale-95 transition-transform duration-300 ease-in-out">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button style="color:#000; background-color:red;" type="submit" class="text-sm text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 px-4 py-2 rounded-lg transition-all duration-300 ease-in-out">
+                Logout
+            </button>
+        </form>
+    </div>
+
     <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        {{-- <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Admin Dashboard</h2>
             <a href="{{ route('dashboard') }}" class="btn btn-primary">User Dashboard</a>
-        </div>
+        </div> --}}
         <!-- Tabs Navigation -->
         <ul class="nav nav-tabs" id="orderTabs" role="tablist">
             <li class="nav-item" role="presentation">

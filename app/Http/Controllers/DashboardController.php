@@ -14,29 +14,70 @@ class DashboardController extends Controller
     //
     public function index()
     {
-        
-        $results = DB::table('_national_votes') 
-            ->select('party_id', DB::raw('COUNT(*) as count'))
-            ->where('priority', 1)
-            ->groupBy('party_id')
-            ->orderBy('count', 'desc')
-            ->limit(3)
-            ->get();
-    
+        $results = DB::table('national_vote_summary')
+         ->whereIn('ranking', [1, 2, 3])
+         ->get();
+
        
-        $partyIds = $results->pluck('party_id');
-    
+        $data = [];
+        foreach($results as $result ){
+            $count = 0;
+            switch ($result->ranking) {
+                case 1:
+                    $count = $result->priority_1_count;
+                        break;
+                case 2:
+                     $count = $result->priority_2_count;
+                        break;
+                case 3:
+                     $count = $result->priority_3_count;
+                         break;
+             }
+                        
+                     $data[] = [
+                        "party_name" => $result->candidate_name,
+                        "count" => $count
+                         ];
+        }
       
-        $parties = DB::table('parties')->whereIn('id', $partyIds)->get()->keyBy('id');
-    
+            
+       
+        $district_id = Auth::user()->extra_column;
+        $district = District::find($district_id);
+
+    if ($district_id) {
      
-        $data = $results->map(function ($result) use ($parties) {
-            return [
-                'party_name' => $parties[$result->party_id]->candidate_name,
-                'count' => $result->count,
-            ];
-        });
-        return view('dashboard', compact('data'));
+        $results = DB::table('district_vote_summary')
+         ->where('district_id',$district_id)
+         ->whereIn('ranking', [1, 2, 3])
+         ->get();
+
+        
+         $data1 = [];
+         foreach($results as $result ){
+             $count = 0;
+             switch ($result->ranking) {
+                 case 1:
+                     $count = $result->priority_1_count;
+                         break;
+                 case 2:
+                      $count = $result->priority_2_count;
+                         break;
+                 case 3:
+                      $count = $result->priority_3_count;
+                          break;
+              }
+                         
+                      $data1[] = [
+                         "party_name" => $result->candidate_name,
+                         "count" => $count
+                          ];
+         }
+
+    }
+   
+      
+    return view('dashboard', compact( 'district') + ['data' => collect($data), 'data1' => collect($data1)]);
     }
     public function getNationalVotes(Request $request)
     {
