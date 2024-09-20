@@ -189,7 +189,7 @@
                     <input type="hidden" name="third_prediction" id="third-prediction-input">
                 </div>
 
-                <div class="mt-2 w-full flex justify-center">
+                <div class="mt-20 w-full flex justify-center">
                     <button type="submit" class="w-[300px] bg-yellow-300 hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded">
                         Submit
                     </button>
