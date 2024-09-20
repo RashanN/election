@@ -118,10 +118,10 @@
         </form>
     </div>
 
-    <div class="footer">
+    {{-- <div class="footer">
         &copy; All Rights Reserved.
     </div>
-      
+       --}}
     <script type="text/javascript">
         $('#contactUSForm').submit(function(event) {
             event.preventDefault();
