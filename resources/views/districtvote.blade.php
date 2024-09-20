@@ -198,11 +198,11 @@
             <div class="mt-10 flex flex-col items-center form-group mb-3"> 
                 <div class="form-group">
                     <input type="hidden" name="district" value="{{ $districtId }}">
-                    <h2 class="display-4 text-2xl font-weight-bold text-primary">{{ $district->name }}</h2>
+                    <h2 class="display-4 text-3xl font-weight-bold text-primary">{{ $district->name }}</h2>
                 </div>
             </div>
             <div class="mb-6 text-center">
-                <img src="img/title/1.png" alt="National Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-64 xl:w-64 h-auto" />
+                <img src="img/title/2.png" alt="National Level Predictions" class="mx-auto w-48 sm:w-48 md:w-48 lg:w-48 xl:w-48 h-auto" />
             </div>
             
             
