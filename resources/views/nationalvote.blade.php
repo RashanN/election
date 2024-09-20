@@ -19,15 +19,7 @@
             }
         }
 
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            color: rgb(255, 255, 255);
-            font-size: 12px;
-        } 
+        
         .logout-button {
                 display: none; /* Initially hidden */
             }
@@ -289,10 +281,7 @@
         });
     </script>
 
-    <!-- Footer -->
-    <div class="footer">
-        &copy; All Rights Reserved.
-    </div>
+
 
 </body>
 </html>
