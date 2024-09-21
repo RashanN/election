@@ -239,7 +239,7 @@
         @endif
 
 </div>
-<div class="absolute bottom-0 w-full text-center mt-6 ">
+<div class="absolute mb-5 w-full text-center mt-6 ">
     <a href="{{ route('dashboard') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
         See Overall Predictions
     </a>
