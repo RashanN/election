@@ -64,7 +64,7 @@
             @csrf
             
             <div class="w-full mb-4">
-                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <label for="name" class="block text-sm font-medium text-gray-700">Osthar Name</label>
                 <input id="name" class="w-full bg-white border border-gray-300 rounded px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-black" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
                 @error('name')
                     <span class="text-red-500 text-xs">{{ $message }}</span>

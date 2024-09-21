@@ -117,7 +117,7 @@
         @endif
 
         <div class="mt-3 text-center">
-                <img src="img/title/6.png" alt="District Level Predictions" class="mx-auto w-full h-auto  " />
+                <img src="img/title/7.png" alt="District Level Predictions" class="mx-auto w-full h-auto  " />
         </div>
 
     </div>
@@ -133,7 +133,7 @@ const myBarChart = new Chart(nationalCtx, {
     data: {
         labels: nationalChartLabels,
         datasets: [{
-            label: '# of Votes/Predictions',
+            label: '# of Predictions',
             data: nationalChartData,
             backgroundColor: [
                                         '#b51d94',
@@ -213,7 +213,7 @@ const myDistrictBarChart = new Chart(districtCtx, {
     data: {
         labels: districtChartLabels,
         datasets: [{
-            label: '# of Votes/Predictions',
+            label: '# of Predictions',
             data: districtChartData,
             backgroundColor: [
                                         '#b51d94',
