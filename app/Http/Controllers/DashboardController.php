@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function index()
     {
         $results = DB::table('national_vote_summary')
-        ->OrderBy('priority_1_count')
+        ->orderByDesc('priority_1_count')
          ->take(4) 
          ->get();
        
@@ -41,7 +41,7 @@ class DashboardController extends Controller
      
         $results = DB::table('district_vote_summary')
         ->where('district_id',$district_id)
-        ->OrderBy('priority_1_count')
+        ->orderByDesc('priority_1_count')
                   // Sort by the latest created_at
         ->take(4) 
         ->get();

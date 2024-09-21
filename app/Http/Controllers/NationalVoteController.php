@@ -54,7 +54,7 @@ class NationalVoteController extends Controller
     public function showResults()
     {
         $results = DB::table('national_vote_summary')
-        ->OrderBy('priority_1_count')
+        ->orderByDesc('priority_1_count')
          ->take(4) 
          ->get();
        
