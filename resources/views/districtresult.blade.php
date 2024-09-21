@@ -175,7 +175,7 @@
         <canvas id="myBarChart" class="w-full" style="height: 250px;"></canvas>
         </div>
         <div class="mt-4 text-center">
-            <a href="{{ route('dashboard') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
+            <a href="{{ route('result') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
                Next
             </a>
         </div>
@@ -205,7 +205,7 @@ const myBarChart = new Chart(ctx, {
 
         datasets: [{
 
-            label: 'Votes/Predictions',
+            label: 'Winner Prediction %',
 
             data: chartData,
 

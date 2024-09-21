@@ -56,7 +56,7 @@
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen">
-    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[24rem] md:w-[32rem] lg:w-[40rem] h-[770px] rounded-lg overflow-hidden shadow-lg">
+    <div class="absolute top-0 bottom-0 bg-black bg-opacity-30 text-white w-full sm:w-[24rem] md:w-[32rem] lg:w-[40rem] h-[800px] rounded-lg overflow-hidden shadow-lg">
         <div class="flex justify-between items-center bg-black py-4 px-6">
             <div class="text-white font-bold text-lg md:text-2xl"><img src="img/logo w.gif" alt="Logo" class="w-40 h-auto"></div>
             <!-- User Name and Logout -->
@@ -117,9 +117,13 @@
         @endif
 
         <div class="mt-3 text-center">
-                <img src="img/title/6.png" alt="District Level Predictions" class="mx-auto w-full h-auto  " />
+                <img src="img/title/10.png" alt="District Level Predictions" class="mx-auto w-full h-auto  " />
         </div>
-
+        <div class="mt-4 mb-8 text-center">
+    <a href="{{ route('result') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
+        View My Prediction
+    </a>
+</div>
     </div>
                 <!-- Bar Chart Script -->
                 <script>
@@ -133,7 +137,7 @@ const myBarChart = new Chart(nationalCtx, {
     data: {
         labels: nationalChartLabels,
         datasets: [{
-            label: '# of Votes/Predictions',
+            label: 'Winner Prediction %',
             data: nationalChartData,
             backgroundColor: [
                                         '#b51d94',
@@ -213,7 +217,7 @@ const myDistrictBarChart = new Chart(districtCtx, {
     data: {
         labels: districtChartLabels,
         datasets: [{
-            label: '# of Votes/Predictions',
+            label: 'Winner Prediction %',
             data: districtChartData,
             backgroundColor: [
                                         '#b51d94',

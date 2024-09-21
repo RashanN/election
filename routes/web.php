@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/districtvote',[DistrictVoteController::class,'store'])->name('districtvote.store');
 
     Route::get('/district-results', [DistrictVoteController::class, 'showResults'])->name('districtresults');
+    Route::get('/results', [DistrictVoteController::class, 'result'])->name('result');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Party;
 use App\Models\District;
 use App\Models\DistrictVote;
+use App\Models\NationalVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -85,24 +86,20 @@ class DistrictVoteController extends Controller
      
         $results = DB::table('district_vote_summary')
          ->where('district_id',$district_id)
-         ->whereIn('ranking', [1, 2, 3])
+         ->orderByDesc('priority_1_count')
+                   
+         ->take(4) 
          ->get();
 
         
          $data = [];
          foreach($results as $result ){
              $count = 0;
-             switch ($result->ranking) {
-                 case 1:
+             
                      $count = $result->priority_1_percentage;
-                         break;
-                 case 2:
-                      $count = $result->priority_2_percentage;
-                         break;
-                 case 3:
-                      $count = $result->priority_3_percentage;
-                          break;
-              }
+                       
+                
+           
                          
                       $data[] = [
                          "party_name" => $result->candidate_name,
@@ -120,5 +117,37 @@ class DistrictVoteController extends Controller
     public function showImage(){
         $districts = District::all();
         return view('districtimage', compact('districts'));
+    }
+
+    public function result(){
+
+        $user_id= Auth::user()->id;
+        $districtId=Auth::user()->extra_column;
+        
+        $lastNationalVotes = NationalVote::where('user_id', $user_id)
+        ->latest()            // Sort by the latest created_at
+        ->take(3)  
+        ->Orderby('priority')            // Limit to the last 3 results
+        ->with('party')       // Eager load the associated party
+        ->get();
+
+        $lastDistrictVotes = DistrictVote::where('user_id', $user_id)
+        ->latest()               // Sort by the latest created_at
+        ->take(3)                // Limit to the last 3 results
+        ->orderBy('priority')    // Order by priority
+        ->with('party') // Eager load both party and district
+        ->get();
+        
+        $district = District::find($districtId);
+
+        // Check if the district exists, if not use 'Colombo'
+        $districtName = $district ? $district->name : 'Colombo';
+    
+    
+
+    return view('result', compact('lastNationalVotes','lastDistrictVotes','districtName'));
+
+
+
     }
 }
