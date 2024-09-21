@@ -197,8 +197,8 @@
         <div class="flex flex-col items-center form-group mb-6">
             <div class="custom-select">
                 <div class="flex items-center">
-                    <img src="{{ $vote->party->logo ?? 'default-logo.png' }}" alt="Party Logo" width="50" class="mr-2">
-                    <span>{{ $vote->party->name ?? 'Unknown Party' }}</span>
+                    <img src="{{ $vote->party->logo ?? 'default-logo.png' }}" alt="Party Logo" >
+                   
                 </div>
             </div>
         </div>
