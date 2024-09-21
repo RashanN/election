@@ -117,7 +117,7 @@
         @endif
 
         <div class="mt-3 text-center">
-                <img src="img/title/7.png" alt="District Level Predictions" class="mx-auto w-full h-auto  " />
+                <img src="img/title/10.png" alt="District Level Predictions" class="mx-auto w-full h-auto  " />
         </div>
 
     </div>
