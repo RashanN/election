@@ -191,8 +191,8 @@
 
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
 
-        @if($lastDistrictVotes->isNotEmpty())
-    @foreach($lastDistrictVotes as $vote)
+        @if($lastNationalVotes->isNotEmpty())
+    @foreach($lastNationalVotes as $vote)
         <!-- Dynamic Prediction Preview for each vote -->
         <div class="flex flex-col items-center form-group mb-6">
             <div class="custom-select">
@@ -208,7 +208,26 @@
 @endif
 
     </div>
+        
+    <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
 
+        @if($lastDistrictVotes->isNotEmpty())
+        @foreach($lastDistrictVotes as $vote)
+        <!-- Dynamic Prediction Preview for each vote -->
+        <div class="flex flex-col items-center form-group mb-6">
+            <div class="custom-select">
+                <div class="flex items-center">
+                    <img src="{{ $vote->party->logo ?? 'default-logo.png' }}" alt="Party Logo" >
+                
+                </div>
+            </div>
+        </div>
+        @endforeach
+        @else
+        <p class="text-center">No votes available for preview.</p>
+        @endif
+
+</div>
     <script>
    
     
