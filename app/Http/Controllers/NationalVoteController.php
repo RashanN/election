@@ -54,24 +54,16 @@ class NationalVoteController extends Controller
     public function showResults()
     {
         $results = DB::table('national_vote_summary')
-         ->whereIn('ranking', [1, 2, 3])
+        ->OrderBy('priority_1_count')
+         ->take(4) 
          ->get();
-
        
         $data = [];
         foreach($results as $result ){
             $count = 0;
-            switch ($result->ranking) {
-                case 1:
+           
                     $count = $result->priority_1_percentage;
-                        break;
-                case 2:
-                     $count = $result->priority_2_percentage;
-                        break;
-                case 3:
-                     $count = $result->priority_3_percentage;
-                         break;
-             }
+                      
                         
                      $data[] = [
                         "party_name" => $result->candidate_name,

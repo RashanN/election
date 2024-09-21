@@ -86,24 +86,20 @@ class DistrictVoteController extends Controller
      
         $results = DB::table('district_vote_summary')
          ->where('district_id',$district_id)
-         ->whereIn('ranking', [1, 2, 3])
+         ->OrderBy('priority_1_count')
+                   // Sort by the latest created_at
+         ->take(4) 
          ->get();
 
         
          $data = [];
          foreach($results as $result ){
              $count = 0;
-             switch ($result->ranking) {
-                 case 1:
+             
                      $count = $result->priority_1_percentage;
-                         break;
-                 case 2:
-                      $count = $result->priority_2_percentage;
-                         break;
-                 case 3:
-                      $count = $result->priority_3_percentage;
-                          break;
-              }
+                       
+                
+           
                          
                       $data[] = [
                          "party_name" => $result->candidate_name,
