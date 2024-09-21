@@ -191,7 +191,7 @@
 
         <div class="mb-3 text-center">
                 <img src="img/title/9.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
-        </div>>
+        </div>
 
          <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px; text-align: center;">
               <h3>National</h3>

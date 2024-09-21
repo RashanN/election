@@ -205,7 +205,7 @@ const myBarChart = new Chart(ctx, {
 
         datasets: [{
 
-            label: 'Predictions',
+            label: 'Winner Prediction %',
 
             data: chartData,
 

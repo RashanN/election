@@ -119,7 +119,7 @@
                             data: {
                                 labels: chartLabels,
                                 datasets: [{
-                                    label: 'Predictions',
+                                    label: 'Winner Prediction %',
                                     data: chartData,
                                     backgroundColor: [
                                         '#b51d94',

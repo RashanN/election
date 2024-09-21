@@ -137,7 +137,7 @@ const myBarChart = new Chart(nationalCtx, {
     data: {
         labels: nationalChartLabels,
         datasets: [{
-            label: '# of Predictions',
+            label: 'Winner Prediction %',
             data: nationalChartData,
             backgroundColor: [
                                         '#b51d94',
@@ -217,7 +217,7 @@ const myDistrictBarChart = new Chart(districtCtx, {
     data: {
         labels: districtChartLabels,
         datasets: [{
-            label: '# of Predictions',
+            label: 'Winner Prediction %',
             data: districtChartData,
             backgroundColor: [
                                         '#b51d94',
