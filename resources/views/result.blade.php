@@ -239,7 +239,7 @@
         @endif
 
 </div>
-<div class="mt-4 text-center">
+<div class="mt-4 mt-2 text-center">
             <a href="{{ route('dashboard') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
                 See Overall Predictions
             </a>
