@@ -126,6 +126,8 @@ class DistrictVoteController extends Controller
     public function result(){
 
         $user_id= Auth::user()->id;
+        $district=Auth::user()->extra_column;
+        
         $lastNationalVotes = NationalVote::where('user_id', $user_id)
         ->latest()            // Sort by the latest created_at
         ->take(3)  
@@ -137,11 +139,17 @@ class DistrictVoteController extends Controller
         ->latest()               // Sort by the latest created_at
         ->take(3)                // Limit to the last 3 results
         ->orderBy('priority')    // Order by priority
-        ->with(['party', 'district']) // Eager load both party and district
+        ->with('party') // Eager load both party and district
         ->get();
         
+        $district = District::find($districtId);
 
-    return view('result', compact('lastNationalVotes','lastDistrictVotes'));
+        // Check if the district exists, if not use 'Colombo'
+        $districtName = $district ? $district->name : 'Colombo';
+    
+    
+
+    return view('result', compact('lastNationalVotes','lastDistrictVotes','districtName'));
 
 
 

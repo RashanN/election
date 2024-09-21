@@ -217,7 +217,7 @@
 
     </div>
     <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px;text-align: center;">
-    <h3>"{{ $vote->district->name }}</h3>
+    <h3>"{{$districtName }}</h3>
          </div>
 
     <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; ">
