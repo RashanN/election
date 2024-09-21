@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Party;
 use App\Models\District;
 use App\Models\DistrictVote;
+use App\Models\NationalVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -120,5 +121,26 @@ class DistrictVoteController extends Controller
     public function showImage(){
         $districts = District::all();
         return view('districtimage', compact('districts'));
+    }
+
+    public function result(){
+
+        $user_id= Auth::user()->id;
+        $lastNationalVotes = NationalVote::where('user_id', $user_id)
+        ->latest()            // Sort by the latest created_at
+        ->take(3)             // Limit to the last 3 results
+        ->with('party')       // Eager load the associated party
+        ->get();
+
+        $lastDistrictVotes = DistrictVote::where('user_id', $user_id)
+        ->latest()            // Sort by the latest created_at
+        ->take(3)             // Limit to the last 3 results
+        ->with('party')       // Eager load the associated party
+        ->get();
+
+    return view('votes', compact('lastNationalVotes','lastDistrictVotes'));
+
+
+
     }
 }
