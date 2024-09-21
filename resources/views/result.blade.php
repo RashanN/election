@@ -190,7 +190,7 @@
         </div>
 
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 20px; text-align: center; font-size:15px;">
-              <h1>My Osthar Prediciton</h1>
+              <h1 style="marging: top 15px; font-size:15px;">My Osthar Prediciton</h1>
          </div>
 
          <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px; text-align: center;">
