@@ -119,6 +119,11 @@
         <div class="mt-3 text-center">
                 <img src="img/title/10.png" alt="District Level Predictions" class="mx-auto w-full h-auto  " />
         </div>
+        <div class="mt-4 text-center">
+            <a href="{{ route('result') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
+               View My Prediction
+            </a>
+        </div>
 
     </div>
                 <!-- Bar Chart Script -->
