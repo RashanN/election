@@ -47,7 +47,7 @@ class DashboardController extends Controller
         ->get();
 
        
-        $data = [];
+        $data1 = [];
         foreach($results as $result ){
             $count = 0;
             
@@ -56,7 +56,7 @@ class DashboardController extends Controller
                
           
                         
-                     $data[] = [
+                     $data1[] = [
                         "party_name" => $result->candidate_name,
                         "count" => $count
                          ];
