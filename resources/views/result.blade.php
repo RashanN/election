@@ -217,7 +217,7 @@
 
     </div>
     <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px;text-align: center;">
-    <h3>"{{$districtName }}</h3>
+    <h3>{{$districtName }}</h3>
          </div>
 
     <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; ">
@@ -239,6 +239,11 @@
         @endif
 
 </div>
+<div class="mt-4 text-center">
+            <a href="{{ route('dashboard') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
+                See Overall Predictions
+            </a>
+        </div>
     <script>
    
     
