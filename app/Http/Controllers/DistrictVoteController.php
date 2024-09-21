@@ -138,7 +138,7 @@ class DistrictVoteController extends Controller
         ->with('party')       // Eager load the associated party
         ->get();
 
-    return view('votes', compact('lastNationalVotes','lastDistrictVotes'));
+    return view('result', compact('lastNationalVotes','lastDistrictVotes'));
 
 
 
