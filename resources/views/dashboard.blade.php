@@ -168,6 +168,7 @@ const myBarChart = new Chart(nationalCtx, {
             legend: {
                 labels: {
                     color: '#FFFFFF',
+                    boxWidth:0,
                 }
             },
             tooltip: {
@@ -248,6 +249,7 @@ const myDistrictBarChart = new Chart(districtCtx, {
             legend: {
                 labels: {
                     color: '#FFFFFF',
+                    boxWidth:0,
                 }
             },
             tooltip: {

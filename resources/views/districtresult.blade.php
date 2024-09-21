@@ -272,6 +272,7 @@ const myBarChart = new Chart(ctx, {
                 labels: {
 
                     color: '#FFFFFF', // Legend text color
+                    boxWidth:0,
 
                 }
 

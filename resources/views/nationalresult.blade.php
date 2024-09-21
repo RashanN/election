@@ -152,7 +152,9 @@
                                 plugins: {
                                     legend: {
                                         labels: {
-                                            color: '#FFFFFF', // Legend text color
+                                            color: '#FFFFFF', 
+                                            boxWidth:0,
+                                            // Legend text color
                                         }
                                     },
                                     tooltip: {
