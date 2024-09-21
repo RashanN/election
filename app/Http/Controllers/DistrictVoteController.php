@@ -134,7 +134,8 @@ class DistrictVoteController extends Controller
 
         $lastDistrictVotes = DistrictVote::where('user_id', $user_id)
         ->latest()            // Sort by the latest created_at
-        ->take(3)             // Limit to the last 3 results
+        ->take(3)   
+        ->Orderby('priority')          // Limit to the last 3 results
         ->with('party')       // Eager load the associated party
         ->get();
 
