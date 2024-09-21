@@ -188,10 +188,14 @@
                 </div>
             </div>
         </div>
-        
-        <div class="mb-6 text-center">
-                <img src="img/title/2.png" alt="National Level Predictions" class="mx-auto w-48 sm:w-48 md:w-48 lg:w-48 xl:w-48 h-auto" />
-            </div>
+
+        <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px;">
+              <h3>My Osthar Prediciton</h3>
+         </div>
+
+         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px;">
+              <h3>National</h3>
+         </div>
 
         <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
 
@@ -212,7 +216,10 @@
 @endif
 
     </div>
-        
+    <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px;">
+              <h3>District</h3>
+         </div>
+
     <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;">
 
         @if($lastDistrictVotes->isNotEmpty())
