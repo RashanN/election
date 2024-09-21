@@ -189,8 +189,8 @@
             </div>
         </div>
 
-        <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; mt-4; text-align: center; font-size:15px;">
-              <h1 style="marging: top 15px; font-size:15px;">My Osthar Prediciton</h1>
+        <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;  text-align: center; font-size:15px;" class="mt-4;">
+              <h1 >My Osthar Prediciton</h1>
          </div>
 
          <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px; text-align: center;">
@@ -217,7 +217,7 @@
 
     </div>
     <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; marging: top 10px;text-align: center;">
-              <h3>District</h3>
+    <h3>{{ $vote->district->name }}</h3>
          </div>
 
     <div style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px; ">

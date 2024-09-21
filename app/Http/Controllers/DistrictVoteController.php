@@ -134,10 +134,10 @@ class DistrictVoteController extends Controller
         ->get();
 
         $lastDistrictVotes = DistrictVote::where('user_id', $user_id)
-        ->latest()            // Sort by the latest created_at
-        ->take(3)   
-        ->Orderby('priority')          // Limit to the last 3 results
-        ->with('party')       // Eager load the associated party
+        ->latest()               // Sort by the latest created_at
+        ->take(3)                // Limit to the last 3 results
+        ->orderBy('priority')    // Order by priority
+        ->with(['party', 'district']) // Eager load both party and district
         ->get();
 
     return view('result', compact('lastNationalVotes','lastDistrictVotes'));
