@@ -98,9 +98,7 @@
         </button>
     </form>
 
-                <div class="terms-link">
-                    <a href="{{ asset('terms_and_conditions.pdf') }}" target="_blank" class="text-blue-500 hover:underline">Terms and Conditions</a>
-                </div>
+                
     </div>
 
 
