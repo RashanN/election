@@ -139,7 +139,7 @@ class DistrictVoteController extends Controller
         ->orderBy('priority')    // Order by priority
         ->with(['party', 'district']) // Eager load both party and district
         ->get();
-        dd(  $lastDistrictVotes);
+        
 
     return view('result', compact('lastNationalVotes','lastDistrictVotes'));
 
