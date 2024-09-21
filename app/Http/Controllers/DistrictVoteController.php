@@ -126,7 +126,7 @@ class DistrictVoteController extends Controller
     public function result(){
 
         $user_id= Auth::user()->id;
-        $district=Auth::user()->extra_column;
+        $districtId=Auth::user()->extra_column;
         
         $lastNationalVotes = NationalVote::where('user_id', $user_id)
         ->latest()            // Sort by the latest created_at
