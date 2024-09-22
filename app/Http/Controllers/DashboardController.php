@@ -43,7 +43,7 @@ class DashboardController extends Controller
         ->join('parties', 'result_national.party_id', '=', 'parties.id') // Joining result_national with parties table
         ->select('result_national.id', 'result_national.result', 'result_national.priority', 'result_national.created_at', 'result_national.updated_at', 'parties.candidate_name') // Selecting necessary fields
         ->orderBy('result_national.priority') // Order by priority descending
-        ->take(3) // Get the first 3 values
+        ->take(4) // Get the first 3 values
         ->get();
 
  

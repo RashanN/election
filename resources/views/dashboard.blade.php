@@ -100,7 +100,7 @@
     <div class="mt-0 p-1 md:p-1 flex flex-col items-center">
         <div class="mt-0 flex flex-col items-center form-group mb-3"> 
                 <div class="form-group">
-                    <h2 class="display-4 text-3xl font-weight-bold text-primary">Actual National Results</h2>
+                    <h3 class="display-4 text-3xl font-weight-bold text-primary">Actual National Results</h3>
                 </div>
         </div>
         <!-- <div class="mb-3 text-center">
