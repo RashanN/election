@@ -54,8 +54,7 @@ class DashboardController extends Controller
             $count = 0;
             
                     $count = $result->result;
-                      
-               dd( $count);
+              
           
                         
                      $data1[] = [
