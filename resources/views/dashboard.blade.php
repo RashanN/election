@@ -80,13 +80,13 @@
         <div class="mt-2 p-1 md:p-1 flex flex-col items-center">
             
 
-        <div class="mt-0 flex flex-col items-center form-group mb-3"> 
+        <!-- <div class="mt-0 flex flex-col items-center form-group mb-3"> 
                 <div class="form-group">
                     <h2 class="display-4 text-3xl font-weight-bold text-primary">National</h2>
                 </div>
-        </div>
+        </div> -->
         <div class="mb-3 text-center">
-                <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
+                <img src="img/title/11.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
         </div>
 
             @if ($data->isEmpty())
@@ -100,12 +100,12 @@
     <div class="mt-0 p-1 md:p-1 flex flex-col items-center">
         <div class="mt-0 flex flex-col items-center form-group mb-3"> 
                 <div class="form-group">
-                    <h2 class="display-4 text-3xl font-weight-bold text-primary">{{ $district_name }}</h2>
+                    <h2 class="display-4 text-3xl font-weight-bold text-primary">Actual National Results</h2>
                 </div>
         </div>
-        <div class="mb-3 text-center">
+        <!-- <div class="mb-3 text-center">
                 <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
-        </div>
+        </div> -->
 
         @if ($data->isEmpty())
             <p>No results available yet.</p>

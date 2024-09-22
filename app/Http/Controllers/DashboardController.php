@@ -37,13 +37,13 @@ class DashboardController extends Controller
         $district_id = Auth::user()->extra_column;
         $district = District::find($district_id);
 
-    if ($district_id) {
+    
      
-        $results = DB::table('district_vote_summary')
-        ->where('district_id',$district_id)
-        ->orderByDesc('priority_1_count')
-                  // Sort by the latest created_at
-        ->take(4) 
+        $results = DB::table('result_national')
+        ->join('parties', 'result_national.party_id', '=', 'parties.id') // Joining result_national with parties table
+        ->select('result_national.id', 'result_national.result', 'result_national.priority', 'result_national.created_at', 'result_national.updated_at', 'parties.candidate_name') // Selecting necessary fields
+        ->orderBy('result_national.priority', 'desc') // Order by priority descending
+        ->take(3) // Get the first 3 values
         ->get();
 
        
@@ -60,7 +60,7 @@ class DashboardController extends Controller
                         "party_name" => $result->candidate_name,
                         "count" => $count
                          ];
-        }
+        
 
     }
    
