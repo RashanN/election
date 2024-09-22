@@ -86,9 +86,9 @@
     </a>
 
     <!-- Register Button -->
-    <a href="{{ route('register') }}" class="w-full bg-white text-black font-semibold py-2 px-4 rounded hover:bg-gray-100 uppercase text-center">
+    <!-- <a href="{{ route('register') }}" class="w-full bg-white text-black font-semibold py-2 px-4 rounded hover:bg-gray-100 uppercase text-center">
         REGISTER
-    </a>
+    </a> -->
 
     <!-- Guest Login Button -->
     <form method="POST" action="{{ route('guest.login') }}" class="w-full">

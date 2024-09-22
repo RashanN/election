@@ -80,13 +80,13 @@
         <div class="mt-2 p-1 md:p-1 flex flex-col items-center">
             
 
-        <div class="mt-0 flex flex-col items-center form-group mb-3"> 
+        <!-- <div class="mt-0 flex flex-col items-center form-group mb-3"> 
                 <div class="form-group">
                     <h2 class="display-4 text-3xl font-weight-bold text-primary">National</h2>
                 </div>
-        </div>
+        </div> -->
         <div class="mb-3 text-center">
-                <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
+                <img src="img/title/11.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
         </div>
 
             @if ($data->isEmpty())
@@ -99,13 +99,13 @@
     </div>
     <div class="mt-0 p-1 md:p-1 flex flex-col items-center">
         <div class="mt-0 flex flex-col items-center form-group mb-3"> 
-                <div class="form-group">
-                    <h2 class="display-4 text-3xl font-weight-bold text-primary">{{ $district_name }}</h2>
-                </div>
+        <div class="form-group text-center">
+             <h3 class="text-xl font-bold text-primary">Actual National Results</h3>
         </div>
-        <div class="mb-3 text-center">
+        </div>
+        <!-- <div class="mb-3 text-center">
                 <img src="img/title/1.png" alt="District Level Predictions" class="mx-auto w-64 sm:w-64 md:w-64 lg:w-80 xl:w-80 h-auto  " />
-        </div>
+        </div> -->
 
         @if ($data->isEmpty())
             <p>No results available yet.</p>
@@ -117,11 +117,11 @@
         @endif
 
         
-        <div class="mt-3 text-center">
+        <!-- <div class="mt-3 text-center">
         <a href="{{ route('result') }}" class="bg-pink-500 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-pink-600 transition-colors duration-300">
         View My Prediction
         </a>
-        </div>
+        </div> -->
         <div class="mt-4 mb-8 text-center">
                 <img src="img/title/10.png" alt="District Level Predictions" class="mx-auto w-full h-auto  " />
         </div>
@@ -211,8 +211,9 @@ const myBarChart = new Chart(nationalCtx, {
     </script>
     <script>
     const districtChartLabels = @json($data1->pluck('party_name'));
+    console.log(districtChartLabels);
 const districtChartData = @json($data1->pluck('count'));
-
+console.log(districtChartData);
 const districtCtx = document.getElementById('myDistrictBarChart').getContext('2d');
 const myDistrictBarChart = new Chart(districtCtx, {
     type: 'bar',

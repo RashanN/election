@@ -26,7 +26,7 @@ class GuestLoginController extends Controller
 
     Auth::login($guestUser);
     Session::put('guest_logged_in', true);
-    return redirect()->route('nationalvote.create');
+    return redirect()->route('dashboard');
 
     }
 }
