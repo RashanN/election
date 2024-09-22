@@ -47,7 +47,7 @@ class DashboardController extends Controller
         ->get();
 
  
-
+        dd($results);
        
         $data1 = [];
         foreach($results as $result ){
