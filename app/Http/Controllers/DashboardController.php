@@ -47,7 +47,7 @@ class DashboardController extends Controller
         ->get();
 
  
-        dd($results);
+        
        
         $data1 = [];
         foreach($results as $result ){
@@ -55,7 +55,7 @@ class DashboardController extends Controller
             
                     $count = $result->result;
                       
-               
+               dd( $count);
           
                         
                      $data1[] = [
