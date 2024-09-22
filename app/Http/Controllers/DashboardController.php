@@ -46,19 +46,21 @@ class DashboardController extends Controller
         ->take(3) // Get the first 3 values
         ->get();
 
+ 
+
        
         $data1 = [];
         foreach($results as $result ){
             $count = 0;
             
-                    $count = $result->priority_1_percentage;
+                    $count = $result->result;
                       
                
           
                         
                      $data1[] = [
                         "party_name" => $result->candidate_name,
-                        "count" => $count
+                        "count" => $result
                          ];
         
 
