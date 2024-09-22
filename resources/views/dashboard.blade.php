@@ -211,8 +211,9 @@ const myBarChart = new Chart(nationalCtx, {
     </script>
     <script>
     const districtChartLabels = @json($data1->pluck('party_name'));
+    console.log(districtChartLabels);
 const districtChartData = @json($data1->pluck('count'));
-
+console.log(districtChartData);
 const districtCtx = document.getElementById('myDistrictBarChart').getContext('2d');
 const myDistrictBarChart = new Chart(districtCtx, {
     type: 'bar',
