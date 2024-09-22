@@ -59,7 +59,7 @@ class DashboardController extends Controller
                         
                      $data1[] = [
                         "party_name" => $result->candidate_name,
-                        "count" => $result
+                        "count" => $result->result
                          ];
         
 
