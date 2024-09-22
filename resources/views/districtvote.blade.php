@@ -178,14 +178,14 @@
                 </div>
 
                 <!-- Logout Button (hidden by default) -->
-                <div id="logoutButton" class="logout-button absolute right-0 top-full mt-2 bg-black bg-opacity-75 p-2 rounded-lg shadow-lg transform scale-95 transition-transform duration-300 ease-in-out">
+<!--                 <div id="logoutButton" class="logout-button absolute right-0 top-full mt-2 bg-black bg-opacity-75 p-2 rounded-lg shadow-lg transform scale-95 transition-transform duration-300 ease-in-out">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button style="font-family: 'Luckiest Guy', cursive; letter-spacing: 1px;" type="submit" class="text-sm text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 px-4 py-2 rounded-lg transition-all duration-300 ease-in-out">
                             Logout
                         </button>
                     </form>
-                </div>
+                </div> -->
             </div>
         </div>
 
